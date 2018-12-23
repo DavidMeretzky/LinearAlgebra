@@ -1,0 +1,176 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 1
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Wednesday October 10th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+In problems $1$ and $2$ your wording may be different than that of book. I am looking for correctness in the concepts. Problems $1-3$ are worth $70$ points.  The test is out of $100$. 
+
+\begin{problem}
+Give definitions for the following terms:
+\begin{enumerate}
+\item vector space 
+\item subspace 
+\item give the $3$ conditions for a subspace
+\item sum of subspaces
+\item direct sum of subspaces
+\item linear combination of a list of vectors
+\item span of a list of vectors
+\item linear independence of a list of vectors
+\item basis for a vector space 
+\item dimension of a vector space
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+See the text. 
+\end{solution}
+
+\begin{problem}
+State and prove the Linear Dependence Lemma.
+\end{problem}
+
+\begin{solution}
+See the text. 
+\end{solution}
+
+\begin{problem}
+Suppose $p_0, p_1,..., p_m$ are polynomials in $\mathcal{P}_m$$($\textbf{F}$)$ such that $p_j(2) = 0$ for each $j$. Prove that $p_0, p_1,..., p_m$ is not linearly independent in $\mathcal{P}_m$$($$\textbf{F}$$)$.
+\end{problem}
+
+\begin{solution}
+See the text. 
+\end{solution}
+
+Do enough problems to reach the remaining $30$ points:
+
+\begin{problem}
+(10 points) Let $$U = \{(x,y,x+2y, 4x-y, 3y) \in \textbf{F}^5 \ : \ x,y \in \textbf{F}\}$$ Find a basis for $U$. Extend this basis to a basis of $\textbf{F}^5$ and then use this to find a subspace $W$ such that $W \oplus U = \textbf{F}^5$.  
+\end{problem}
+
+\begin{solution}
+Suppose instead I asked you to find a basis of a simpler space, $\{(x,y) \in F^2 \ :  \ x, y \in \textbf{F}\}$. One immediately notes that the standard basis works. That is, for any $(x,y) \in \textbf{F}^2$, $(x,y)$ can be written as $$(x,y) = x(1,0)+y(0,1)$$ in exactly one way $(\textit{see criterion for a basis})$. The notation suggests (in some cases misleadingly, but in this case very nicely) that the decomposition to the standard basis exists. 
+
+Translating this intuition over to this problem we can guess that the list $(1,0,1,4,0),(0,1,2,-1,3)$ forms a basis: note that for scalars $x$ and $y$ we can write any vector of the form $(x,y,x+2y, 4x-y, 3y)$ as linear combination of the above list in exactly one way: $$(x,y,x+2y, 4x-y, 3y) = x(1,0,1,4,0)+ y(0,1,2,-1,3)$$
+
+The fact of the matter is, there are infinitely many basis for any non-trivial finite dimensional vectorspace over $\textbf{F}$. It does not matter which ones you choose. The notation suggests the basis given above but there is nothing forcing this choice. If you feel there is something vaguely inelegant about having to "choose a basis" you would be correct. This is, in part, what Axler means by "Done Right".  In fact, mathematicians call something $\textit{natural}$ when they mean that it is defined without making any arbitrary choices. We will return to this concept. 
+
+The basis for $U$ is of length $2$. We may extend this linearly independent list to a basis of the whole space. Follow the line of proof used in the text. Append the standard basis vectors to the end of the basis for $U$ and remove those which are dependent and therefore by the Linear Dependence Lemma will leave the span unchanged.\\
+
+Define $W$ to be the span of those standard basis vectors which are left over. There should be $3$ of them. (Why?)  Show that if there is any vector $v$ in the intersection of $U$ and $W$ then it must be the $0$ vector. 
+\end{solution}
+
+\begin{problem}
+(5 points) What is the dimension of $\mathcal{P}_m$?
+\end{problem}
+
+\begin{solution}
+A basis for $\mathcal{P}_m$ is $\{1,z,z^2,...z^m\}$ which has length $m+1$ since the dimension of a space is the length of any basis, $\mathcal{P}_m$ has dimension $m+1$. 
+\end{solution}
+
+\begin{problem}
+(5 points) Prove $(1,2),(3,5)$ is a basis of $\textbf{F}^2$. 
+\end{problem}
+
+\begin{solution}
+We need to show that the list spans the space and is linearly independent.\\
+
+To show that $(1,2),(3,5)$ spans $\textbf{F}^2$, pick any vector in $(x,y) \in \textbf{F}^2$ and show it is in the span of $(1,2),(3,5)$. To do this we need to express it as a linear combonation of those vectors. By definition, this amounts to finding coefficients $a,b \in \textbf{F}$ such that $(x,y) = a(1,2)+b(3,5)$. to show that we can always do this for any $(x,y)$ we solve for $a$ and $b$ in terms of $x$ and $y$. 
+
+by performing the addition $(x,y) = a(1,2)+b(3,5) = (a + 3b,2a+5b)$. This yeilds a pair of equations in $\textbf{F}$: $x = a + 3b$ and $y = 2a+5b$. Solving for $a$ we obtain $a = x-3b$. Substituting this into the second equation gives us $y = 2(x-3b)+5b = 2x-b$. Therefore, $b = 2x -y$. Substituting this into the first equation yeilds $x = a + 3(2x-y) = a + 6x - 3y$. It follows that $a = 3y - 5x$. 
+
+Thus we can always express $(x,y)$ as $(x,y) = (3y-5x)(1,2) + (2x-y)(3,5)$. It follows that $(1,2),(3,5)$ spans $\textbf{F}^2$. \\
+
+To show that $(1,2),(3,5)$ is a linearly independent list in $\textbf{F}^2$, one uses the definition. Suppose there exist scalars $a,b \in \textbf{F}$ such that $a(1,2)+b(3,5) = 0$, we need to show that $a = b = 0$. Note that the $0$ on the right side of the equation is the zero vector in $\textbf{F}^2$. That is $a(1,2)+b(3,5) = 0 = (0,0)$. Performing the addition on the left hand side, this yeilds two equations in $\textbf{F}$: $a+3b = 0$ and $2a + 5b = 0$. Solving for $a$ in the first equation gives us: $a = -3b$. Substituting this into the second equation yeilds: $2(-3b)+5b = 0 = -b$. Thus $b = 0$. The first equation then becomes $a +3(0)= 0$. So  $a = b = 0$.\\
+
+Since $(1,2),(3,5)$ spans $\textbf{F}^2$ and is linearly independent, it is a basis for the space.  
+\end{solution}
+
+\begin{problem}
+(10 points) Prove $(1,-1,0),(1,0,-1)$ is a basis of $\{(x,y,z) \in \textbf{F}^3 \ : \ x+y+z =0 \}$
+\end{problem}
+
+\begin{solution}
+Suppose we take any vector $(x,y,z) \in \textbf{F}^3$ then we can decompose $(x,y,z) = -y(1,-1,0) -z(1,0,-1)$. Note that $x = -y -z$ in the first component. Therefore $(1,-1,0),(1,0,-1)$ spans the space. 
+
+Now we verify the linear independence. Suppose that there exist $\alpha, \beta \in \textbf{F}$ such that $\alpha(1,-1,0) + \beta(1,0,-1) = (0,0,0)$ this implies that $-\alpha = 0$ and $-\beta = 0$. Therefore $\alpha = 0$ and $\beta = 0$. Therefore these vectos are linearly independent. 
+
+Since the list is independent and spans it is a basis. 
+\end{solution}
+
+\begin{problem}
+(10 points) Suppose $U$ and $W$ are subspaces of $V$. Then $U + W$ is a direct sum if and only if $U\cap W = \{0\}$.
+\end{problem}
+
+\begin{solution}
+See 1.45 of the text in section 1.C.
+\end{solution}
+
+\begin{problem}
+(5 points) Suppose $U_1$ and $U_2$ are subspaces of $V$. Prove that the intersection $U_1 \cap U_2$ is a subspace of $V$. 
+\end{problem}
+
+\begin{solution}
+See homework 1C solutions.
+\end{solution}
+
+\begin{problem}
+(5 points) Verify both distributive properties in the definition of a vectorspace for $\textbf{F}^3$.
+\end{problem}
+
+\begin{solution}
+Let $x = (x_1,x_2,x_3)$ and $y = (y_1,y_2,y_3)$ be two vectors in $\textbf{F}^3$ and let $\alpha,\beta \in \textbf{F}$
+
+\begin{enumerate}
+\item $\alpha(x+y) = \alpha((x_1,x_2,x_3) + (y_1,y_2,y_3)) = \alpha((x_1 + y_1,x_2 + y_2,x_3 + y_3)) = (\alpha (x_1 + y_1), \alpha (x_2 + y_2),\alpha(x_3 + y_3)) = (\alpha x_1 + \alpha y_1), \alpha x_2 +\alpha  y_2),\alpha x_3 +\alpha  y_3) = \alpha(x_1,x_2,x_3) + \alpha(y_1,y_2,y_3) = \alpha x + \alpha y$
+\item $(\alpha + \beta)x = (\alpha+\beta)(x_1,x_2,x_3) = ((\alpha+\beta)x_1,(\alpha+\beta)x_2,(\alpha+\beta)x_3) = (\alpha x_1+\beta x_1,\alpha x_2 +\beta x_2,\alpha x_3+\beta x_3) = (\alpha x_1,\alpha x_2,\alpha x_3) +(\beta x_1, \beta x_2,\beta x_3) = \alpha x + \beta x$
+\end{enumerate}
+\end{solution}
+
+\end{document}

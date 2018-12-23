@@ -1,0 +1,130 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{example}{Example}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Final Exam
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday Decmeber 17th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\noindent
+
+\begin{problem}
+(30 points) Give definitions for the following terms:
+\begin{enumerate}
+\item linear combination of a list of vectors
+\item span of a list of vectors
+\item linear independence of a list of vectors
+\item linear map
+\item kernel of a linear map
+\item range of a linear map
+\item injectivity of a function
+\item surjectivity of a function
+\item $[ \ \ ]_B:V \rightarrow \textbf{F}^n$
+\item invariant subspace
+\item eigenvalue
+\item eigenvector
+\end{enumerate}
+\end{problem}
+
+
+Do any 7 of the following problems, each worth 10 points. 
+%hard
+\begin{problem}
+Define the dot product on $\textbf{R}^n$. Show it is an inner product. 
+\end{problem}
+
+%hard
+\begin{problem}
+Compute the determinant of the matrix
+$$\begin{pmatrix}
+1 & 2 & 4\\
+2 & 3 &-3 \\
+3 & 2 & 5 
+\end{pmatrix}$$
+\end{problem}
+
+\begin{problem}
+Suppose $T$ is a linear map from $\textbf{F}^4$ to $\textbf{F}^2$ such that $$ker T = \{(x_1,x_2,x_3,x_4) \in \textbf{F}^4|x_1 = 5x_2 \text{ and } x_3 = 7x_4\}.$$ Prove $T$ is surjective.  
+\end{problem}
+
+\begin{problem}
+Suppose $v_1,...,v_m$ is linearly independent in $V$ and $w \in V$ show that $v_1,...,v_m,w$ is linearly independent in $V$ if and only if $w \notin span(v_1,...,v_m)$. 
+\end{problem}
+
+\begin{problem}
+Prove that eigenvectors associated to distinct eigenvalues must be linearly independent. That is, let $v_1,...,v_n$ be eigenvectors with eigenvalues $\lambda_1,...,\lambda_n$ such that $\lambda_1 \neq...\neq \lambda_n$. Show $v_1,...,v_n$ are linearly independent. 
+\end{problem}
+
+\begin{problem}
+Let $T \in \mathscr{L}(V)$ prove that $T$ has at most $dim(V)$ distinct eigenvalues. Hint: Use the solution to the previous problem. 
+\end{problem}
+
+\begin{problem}
+Prove $(1,2)$, $(3,5)$ is a basis for $\textbf{F}^2$. 
+\end{problem}
+
+\begin{problem}
+Theorem 5.26. Give three equivalent conditions conditions under which an operator $T \in \mathscr{L}(V)$ is upper triangular with respect to a basis $B = v_1,...,v_n$. 
+\end{problem}
+
+\begin{problem}
+Suppose the matrix of a linear operator $T$ is upper triangular with respect to some basis. Prove that the eigenvalues of $T$ are precisely the entries on the diagonal of that upper triangular matrix. 
+\end{problem}
+
+\begin{problem}
+Perform the Gram-Schmidt Procedure on the following list of independent vectors: $(2,1,1)$, $(1,2,2)$, $(-2,-2,1)$. Use the usual dot product in $\textbf{R}^3$. 
+\end{problem}
+
+\begin{problem}
+Give an example of a linear map $T:\textbf{R}^4 \rightarrow \textbf{R}^4$ such that $Ran \ T = Ker \ T$. 
+\end{problem}
+
+\end{document}

@@ -1,0 +1,95 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 1.A
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Tuesday August 21th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Suppose $a$ and $b$ are real numbers, not both $0$. Find real numbers $c$ and $d$ such that $\frac{1}{(a+bi)} = c+di$.
+\end{problem}
+
+This problem shows that every complex number has a multiplicative inverse. We can then be sure that our definition of division for complex numbers from class will hold, that is for $\alpha \in \mathbb{C}$ where $\alpha \neq 0$. This is exactly the requirement that for $\alpha = a+bi$, $a$ and $b$ are real numbers which are not both $0$.
+
+\begin{problem}
+Verify properties of $\mathbb{C}$: 
+
+Note from class: Think of $\lambda$ as a scalar or number like something in $\mathbb{F}$ and think of $\alpha$, $\beta$, and $\gamma$ as vectors in $\mathbb{F}^n$, (in this case the vectors are actually in $\mathbb{C}^n$) for $n = 1$.  
+
+Show that for all $\alpha$, $\beta$, $\gamma$ $\lambda$ in $\mathbb{C}$. 
+\begin{enumerate}
+\item $\alpha + \beta = \beta + \alpha$  commutativity of addition
+\item $(\alpha+\beta)+\gamma = \alpha+(\beta + \gamma)$ associativity of addition
+\item $(\alpha\beta)\gamma = \alpha(\beta\gamma)$ commutativity of multiplication
+\item Show that for every $\alpha$ there is a $\beta$ so that $\alpha + \beta = 0$
+\item Show that for every $\alpha$ there is a $\beta$ so that $\alpha\beta = 1$
+\item $\lambda(\alpha+\beta) = \lambda\alpha +\lambda\beta$
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Find $x \in \mathbb{R}^4$ such that $(4,-3,1,7)+2x = (5,9,-6,8)$.
+\end{problem}
+
+
+\begin{problem}
+Explain why there does not exist $\lambda \in \mathbb{C}$ such that $\lambda(2-3i,5+4i,-6+7i) = (12-5i,7+22i,-32-9i)$.
+\end{problem}
+
+
+\begin{problem}
+Verify properties of $\mathbb{F}^n$: 
+Let $x,y,z\in\mathbb{F}^n$ be vectors and $a,b\in\mathbb{F}$ be scalars
+\begin{enumerate}
+\item show associativity of addition $(x+y)+z = x+(y+z)$
+\item show associativity of scalar multiplication $(ab)x = a(bx)$
+\item show there is a multiplicative identity $1x=x$ 
+\item show distributivity of scalar multiplication (vector side) $a(x+y) = ax + ay$
+\item show distributivity of scalar multiplication (scalar side)  $(a+b)x = ax + bx$
+\end{enumerate}
+\end{problem}
+
+
+\end{document}

@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 2.A Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday October 1st, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Suppose $v_1$, $v_2$, $v_3$, and $v_4$ spans $V$. Prove that the list $v_1-v_2$, $v_2-v_3$, $v_3-v_4$,$v_4$ also spans $V$. 
+\end{problem}
+
+\begin{solution}
+Let $v$ be any vector in $V$. Then there exist scalars $\alpha_1$, $\alpha_2$, $\alpha_3$, and $\alpha_4$, such that $v = \alpha_1v_1 + \alpha_2v_2 +\alpha_3v_3 +\alpha_4v_4$. However $v_3 = (v_3-v_4)+v_4$. Similarly, $v_2 = (v_2-v_3)+(v_3-v_4)+v_4$ and $v_1 = (v_1-v_2)+(v_2-v_3)+(v_3-v_4)+v_4$.\\ 
+
+Making these substitutions we obtain that $v = \alpha_1((v_1-v_2)+(v_2-v_3)+(v_3-v_4)+v_4) + \alpha_2((v_2-v_3)+(v_3-v_4)+v_4) +\alpha_3((v_3-v_4)+v_4) +\alpha_4v_4$. Collecting like terms we have that $v = \alpha_1(v_1-v_2)+(\alpha_1+\alpha_2)(v_2-v_3)+(\alpha_1+\alpha_2+\alpha_3)(v_3-v_4)+(\alpha_1+\alpha_2+\alpha_3+\alpha_4)v_4$ as desired.
+\end{solution}
+
+\begin{problem}
+Find a number $t$ such that $(3,1,4)$, $(2,-3,5)$, $(5,9,t)$ is not linearly independent in $\textbf{R}^3$.
+\end{problem}
+
+\begin{solution}
+It suffices to find $t$ such that there exist $a,b,c \in \textbf{R}$ non-zero such that $a(3,1,4)+b(2,-3,5)+c(5,9,t)=0$. We have the following 3 systems of equations $3a+2b+5c=0$, $a-3b+9c=0$, and $4a+5b+tc=0$.\\ 
+
+Solving for $c$ in equation 1. We have $c = \frac{-3a-2b}{5}$.  Plugging this into equation 2 we obtain $a-3b+\frac{9(-3a-2b)}{5}=0$. Expanding this we obtain $\frac{5a}{5}-\frac{15b}{15}-\frac{27a}{5}-\frac{54b}{15} = -66a-42b = 11a+7b = 0$ thus $a = -\frac{7b}{11}$. Equation 3 then becomes $-\frac{28b}{11}+\frac{55b}{11}+t\frac{\frac{21b}{11}-2b}{5} = \frac{135b}{55}+t\frac{b}{55} = 0$. If $t$ is equal to $-135$, then there are non-zero coefficients as desired. 
+\end{solution}
+
+\begin{problem}
+Prove or give counterexample: If $v_1, v_2, ... v_m$ is a linearly independent list of vectors in $V$ and $\lambda \in \textbf{F}$ with $\lambda \neq 0$, then $\lambda v_1, \lambda v_2, ... \lambda v_m$ is linearly independent. 
+\end{problem}
+
+\begin{proof}
+Suppose that $a_1,....a_m \in \textbf{F}$ such that $a_1\lambda v_1+...a_m \lambda v_m = 0$. Then $(a_1\lambda) v_1+...(a_m \lambda) v_m = 0$, so each $a_i\lambda = 0$. Since $\lambda \neq 0$, $a_i = 0$ as desired. 
+\end{proof}
+
+\begin{problem}
+Prove or give counterexample: If $v_1...v_m$ and $w_1...w_m$ are linearly independent lists of vectors in $V$, then $v_1+w_1,...v_m+w_m$ is linearly independent. 
+\end{problem}
+
+\begin{solution}
+Counterexample: Let $v_1 = (1,0)$ and let $v_2 = (0,1)$ and let $w_1 = (0,1)$ and $w_2 = (1,0)$. Then $v_1+w_1 = (1,1)$ and $v_2+w_2 = (1,1)$. This is clearly a dependent list. 
+\end{solution}
+
+\begin{problem}
+Suppose $v_1...v_m$ is linearly independent in $V$ and $w \in V$. Prove that if $v_1+w ... v_m+w$ is linearly dependent then $w \in Span(v_1...v_m)$. 
+\end{problem}
+
+\begin{proof}
+There exist non-zero coefficients $a_1,....a_m \in \textbf{F}$ such that $a_1(v_1+w)+...a_m(v_m+w) = 0$. Then factoring out $w$ we have $(a_1+...+a_m)w+(a_1v_1+...a_mv_m) = 0$ and $a_1v_1+...a_mv_m = -(a_1+...+a_m)w$. Since $v_1...v_m$ is linearly independent and not all of the $a_1,....a_m \in \textbf{F}$ are zero, $-(a_1+...+a_m)w \neq 0$. Thus $-(a_1+...+a_m) \neq 0$. We can then divide both sides of the equation by $-(a_1+...+a_m)$ and we see that $w$ is in the span of $v_1...v_m$. 
+\end{proof}
+
+\begin{problem}
+Suppose $v_1...v_m$ is linearly independent in $V$ and $w \in V$. Show that $v_1...v_m,w$ is linearly independent if and only if $w \notin Span(v_1 .. v_m)$.
+\end{problem}
+
+\begin{proof}
+Note that $w$ cannot be the $0$ vector
+
+Suppose $v_1...v_m,w$ is linearly independent. Suppose $w \in Span(v_1 .. v_m)$. Then there exist non-zero coefficients $a_1...a_m$ such that $a_1v_1+...+a_mv_m = 1\cdot w$. The coefficients must be non-zero otherwise $w$ is the zero vector. Then $a_1v_1+...+a_mv_m-1\cdot w = 0$. But since $v_1...v_m,w$ is linearly independent then the coefficients must all be 0. This is a contradiction. Therefore  $w \notin Span(v_1 .. v_m)$.\\ 
+
+Suppose now that $w \notin Span(v_1 .. v_m)$. Suppose that $v_1...v_m,w$ is linearly dependent. This violates the Linear Dependence Lemma. The result follows by contradiction.  
+\end{proof}
+
+\end{document}

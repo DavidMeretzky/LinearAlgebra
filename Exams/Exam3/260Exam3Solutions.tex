@@ -1,0 +1,168 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{example}{Example}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 3 Take Home Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Friday Decmeber 7th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Problems 1-5 are worth 18 points each. Problem 6 is worth 10 points. The test is out of 100 points. 
+
+\begin{definition}
+Let $V$ be a real or complex vectorspace, $\textbf{F} = \textbf{R}$ or $\textbf{C}$. A norm on $V$ is a real-valued function $||\ \  ||:V \rightarrow \textbf{R}$ such that 
+\begin{enumerate}
+\item for any non-zero vector $v \in V$, $||v|| > 0$, 
+\item for any scalar $\alpha \in \textbf{F}$, $||\alpha v|| = |\alpha|||v||$ for all $v \in V$,
+\item for any $u,v \in V$ $||u+v|| \leq ||u|| + ||v||$
+\end{enumerate}
+We call $V$ a normed linear space. 
+\end{definition}
+
+
+\flushleft
+Let $B = e_1,...,e_n$ be the usual basis for $\textbf{F}^n$. For instance, we know that $\textbf{R}^n$ has the usual euclidean norm: for $v \in  \textbf{F}^n$, $v = a_1e_1 +...+a_ne_n$, define 
+\begin{equation}||v|| = (\sum_{i = 1}^na_i^2)^{\frac{1}{2}}\end{equation}
+
+\begin{example}
+$$||(1,-1)|| = \sqrt{1^2+(-1)^2}$$
+\end{example}
+
+Clearly $\textbf{F}^n$ is a normed linear space. You will show that if $V$ is finite dimensional then $\mathscr{L}(V)$ is a normed linear space. 
+
+\begin{definition}
+Let $V$ be a finite dimensional normed linear space and let  $T \in \mathscr{L}(V)$. Define the operator norm of $T$ to be the smallest number $M$ such that $||Tv|| \leq M||v||$ for any $v \in V$. We will write $||T||$ to mean that smallest number $M$, the operator norm. 
+\end{definition}
+
+\flushleft
+Notice that the norms in the expression $||Tv|| \leq M||v||$ are the norm that $V$ was born with. That is, this definition only makes sense if $V$ has a norm. 
+
+\begin{problem}
+Let $B = e_1,...,e_n$ be an orthonormal basis for $V$ a normed linear space of dimension $n$. Let $T \in \mathscr{L}(V)$. Let $m = Max\{||Te_1||,||Te_2||,...,||Te_n||\}$. That is, $m$ is the length of the longest vector in the list $Te_1,...,Te_n$. Prove that for any unit-length vector $v \in V$, $||Tv|| \leq mn$. 
+\end{problem}
+
+\begin{solution}
+We have that $v = \sum_{i=1}^na_ie_i$ moreover, the requirement that $||v|| = 1$ means that $\sum_{i=1}^na_i^2 = 1$, and thus for each $i$, $|a_i| \leq 1$.   We compute, 
+\begin{equation}
+||Tv|| = ||T(\sum_{i = 1}^na_ie_i)|| = ||\sum_{i = 1}^na_iTe_i|| \leq \sum_{i = 1}^n|a_i|||Te_i|| \leq \sum_{i = 1}^n||Te_i|| \leq \sum_{i = 1}^nm = nm.
+\end{equation}
+\end{solution}
+
+\begin{problem}
+Let $B = e_1,...,e_n$ be an orthonormal basis for $V$ a normed linear space of dimension $n$. Let $T \in \mathscr{L}(V)$. Show that the operator norm of $T$ exists and is finite. (I am asking you to show that taking any $v \in V$, show that there exists a number $K$ such that $||Tv|| \leq $K$||v||$.) Hint: Use the conclusion of the previous problem. Hint: maybe the problem is easier if you assume $||v|| = 1$? 
+\end{problem}
+
+\begin{solution}
+Assume that $||v|| = 1$, then $||Tv|| \leq nm = nm||v||$. Letting $K=nm$ we are finished. Now suppose that we have any $u \in V$,  
+\begin{equation*}
+||Tu|| = ||u||||(\frac{1}{||u||}Tu)|| = ||u||||T(\frac{u}{||u||})||
+\end{equation*}
+A vector divided by it's norm is of norm $1$. Let $v = \frac{u}{||u||}$. Then $||v|| = 1$. Furthermore, 
+\begin{equation*}
+||Tu|| = ||u||||Tv|| \leq ||u||nm||v|| = K||u|| 
+\end{equation*}
+where $K = nm||v|| = nm$. 
+\end{solution}
+
+Now that we know the operator norm exists and is finite:
+
+\begin{problem}
+Show that the operator norm is a norm (satisfies definition 1) on $\mathscr{L}(V)$ for a finite dimensional normed linear space $V$.  
+\end{problem}
+
+\begin{solution}
+We must show that for $T \in \mathscr{L}(V)$ such that $T \neq 0 \in \mathscr{L}(V)$, $||T|| > 0$. 
+Since $T \neq 0$, there exists at least one vector $v \in V$ such that $Tv \neq 0 \in V$. Thus 
+\begin{equation*}
+0<||Tv|| \leq ||T||||v||.
+\end{equation*}
+Since $Tv \neq 0$ it follows that $||v|| > 0$ and since $0< ||T|| ||v||$ we must have that $||T||>0$ as desired.\\
+\vspace{3mm}
+Next we must show that for $T \in \mathscr{L}(V)$, $||\alpha T|| = |\alpha| ||T||$
+
+Given any $v \in V$ by the definition of the operator norm for the operator $\alpha T$ we have   $$||\alpha T v|| \leq ||\alpha T||||v||.$$ However, $$||\alpha T v||  = |\alpha|||Tv|| \leq |\alpha|||T|| ||v||.$$ Thus, $||\alpha T|| \leq |\alpha|||T||$. \\
+\vspace{3mm}
+To show the reverse inequality, note that for $\alpha \neq 0$: $$||Tv|| = ||\alpha T \frac{1}{\alpha} v|| \leq ||\alpha T||||\frac{1}{\alpha}v|| = |\frac{1}{\alpha}|||\alpha T||||v||$$ from which it follows that $$||T|| \leq |\frac{1}{\alpha}|||\alpha T||$$ and thus $$|\alpha|||T|| \leq ||\alpha T||.$$ The desired equality $$|\alpha|||T|| = ||\alpha T||$$ is obtained. The case $\alpha = 0$ is immediate.\\
+\vspace{3mm}
+For any $T,S \in \mathscr{L}(V)$ and any $v \in V$, we compute $$||(S+T)(v)|| = ||Sv + Tv|| \leq ||Sv|| + ||Tv|| \leq ||S||||v|| + ||T||||v|| = (||S|| + ||T||)||v||$$ from which it follows that $$||S+T|| \leq ||S|| + ||T||$$ where the second inequality above comes from the triangle inequality for the norm on $V$.
+\end{solution}
+
+%What does the operator norm have to do with the largest eigenvalue?\\
+Let $T$ be an invertable linear operator of a finite dimensional normed linear space $V$. 
+
+\begin{problem}
+Let $v$ be an eigenvector for $T$ with eigenvalue $\lambda$. Prove that $||Tv|| = |\lambda|||v||$. Prove that $|\lambda| \leq ||T||$. 
+\end{problem}
+
+\begin{solution}
+We have $||Tv|| = ||\lambda v|| = |\lambda|||v||.$ Now compute $$|\lambda|||v|| = ||Tv|| \leq ||T||||v||$$ from which it follows that $|\lambda| \leq ||T||$. 
+\end{solution}
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(V)$ is invertible. Suppose $\lambda \in \textbf{F}$ with $\lambda\neq 0$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$. 
+\end{problem}
+
+\begin{solution}
+Let $v$ be an eigenvector for $\lambda$. Then $T^{-1}Tv = T^{-1}\lambda v = \lambda T^{-1}v$. But since $T^{-1}Tv = v$, we must have that $\lambda T^{-1}v = v$ from which it follows that $T^{-1}v = \frac{1}{\lambda}v$. Since all steps of the proof hold with equality, the result holds in both directions. 
+\end{solution}
+
+\begin{problem}
+Let $V$ be a finite dimensional inner product space over $\textbf{R}$. What can you say about the relationship between the induced norm on $V$ and the operator norm on $\mathscr{L}(V,\textbf{R})$? Define the operator norm on $\mathscr{L}(V,\textbf{R})$ by letting $||\phi||$ for $\phi \in \mathscr{L}(V,\textbf{R})$ be the smallest number $M$ such that $|\phi(v)| \leq M||v||$ for all $v\in V$.\\ 
+
+Hint: The Reisz Representation Theorem gives a nice association: for every $\phi \in \mathscr{L}(V,\textbf{R})$ there exists a unique $v \in V$ such that $\langle \ \  ,v\rangle$ is equal to $\phi( \ \ )$.  
+\end{problem}
+
+\begin{solution}
+Pick any $\phi$. There exists a unique $v \in V$ such that $\langle \ \  ,v\rangle$ is equal to $\phi( \ \ )$. 
+Now for any $u \in V$, we compute $$|\phi(u)| = |\langle u,v\rangle| \leq ||u||||v||$$ by the The Reisz Representation Theorem and the Cauchy-Schwarz Inequality. It must follow that $$||\phi|| \leq ||v||.$$ To show the reverse inequality note that $$|\phi(v)| = |\langle v,v\rangle| = ||v||^2 \leq ||\phi||||v||$$ from which it follows that $$||v|| \leq ||\phi||$$ and furthermore that $$||\phi|| = ||v||.$$
+\end{solution}
+
+\end{document}

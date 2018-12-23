@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Notes Quotients of Vector Spaces
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+October 31th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+The prerequisite for these notes is reading the first two pages of section 3E and the previous set of notes, Quotients of Sets. 
+
+Repeated here for reference are just the theorems and definitions from Quotients of Sets. 
+
+\subsection*{Notation}
+
+\begin{definition}
+For any natural number $n$, let $\textbf{n}$ denote the set $\{1,2,...,n\}$. That is, $\textbf{n} = \{1,2,...,n\}$. 
+\end{definition}
+
+\begin{definition}
+Let $A$ and $B$ be sets.  We say $A$ and $B$ are isomorphic if there exists an injective and surjective function from $A$ to $B$. The statement $A$ and $B$ are isomorphic can be written $A \cong B$. 
+\end{definition}
+
+\begin{theorem}
+If $n$, $m$, and $k$ are natural numbers such that $nm = k$, then the cartesian product $\textbf{n} \times \textbf{m} \cong \textbf{k}$. 
+\end{theorem}
+
+\subsection*{Quotients of Sets}
+
+\begin{definition}
+For natural numbers $n$,$m$, and $k$ such that $nm=k$ and therefore $\textbf{n} \times \textbf{m} \cong \textbf{k}$,  define the quotient of $\textbf{k}$ by $\textbf{m}$, denoted $\textbf{k/m}$ to be the set $\{(1,\textbf{m}),(2,\textbf{m}),...,(n,\textbf{m})\}$.  As one can see $\textbf{k/m}$ consists of $n$ elements, each element being a pair consisting of an element of $\textbf{n}$ in the first coordiante and the entire set $\textbf{m}$ in the second coordinate. 
+\end{definition}
+
+\begin{definition}
+Let $\textbf{k/m}$ be a quotient of $\textbf{k}$ as in definition 3. Define a function called the projection $p:\textbf{n}\times\textbf{m} \rightarrow \textbf{k/m}$ as follows: let $(i,j) \in \textbf{n} \times \textbf{m}$ then $$p(i,j) = (i,\textbf{m})$$ in $\textbf{k/m}$. Note that $i \in \textbf{n}$ and $j \in \textbf{m}$. 
+\end{definition}
+
+\begin{theorem}
+Suppose there are natural numbers $n$, $m$, and $k$, such that $nm = k$. The quotient $\textbf{k/m}$ is isomorphic to $\textbf{n}$. 
+\end{theorem}
+
+
+\begin{definition}
+Let $\textbf{k/m}$ be a quotient of $\textbf{k}$ as in definition 3. Let $g:\textbf{k} \rightarrow \textbf{n}\times \textbf{m}$ be the inverse of the isomorphism guarateed by theorem 1. The quotient function, denoted, $\pi$, is defined to be the map which takes any $x \in \textbf{k}$, first by $g$ to an element  $g(x) = (i,j) \in \textbf{n}\times\textbf{m}$ then down $p$ to the element $p(g(x)) \in \textbf{k/m}$.
+
+\begin{center}
+\begin{tikzcd}
+\textbf{k} \arrow[r, "g"] \arrow[dr,"\pi"'] & \textbf{n}\times\textbf{m} \arrow[d, "p"] \\ 
+ &  \textbf{k/m} 
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+\subsection*{Quotients of Vector Spaces}
+ 
+Let's take a step back. How did we define our division $\pi$ of sets? First we ``factored" the set, by finding what product it was isomorphic to such that the product contained the set to be divided out as one of its factors. Then, we used the projection to collapse the portion of the product to be divided out. These two steps correspond to the use of the maps $g$ and $p$ in succession.\\ 
+
+\textit{Note: For instance suppose we are looking for $\textbf{18/6}$. It is true that $\textbf{18} \cong \textbf{9}\times \textbf{2}$ but this isomorphism is of little use since $\textbf{6}$ does not appear in the product, thus the projection from $\textbf{3}\times \textbf{6}$ to $\textbf{18/6}$ cannot be used.}\\
+
+Let $V$ be a vectorspace.  Suppose we would like to divide it by some subspace $U$. Experience dictates that we should first try to find a subspace $W$ such that $U \times W \cong V$, and second, project away $U$ and come up with a vectorspace $V/U \cong W$.\\
+
+Rather dissapointingly we know that $dim(U \times W) \neq dim(U) \times dim(W)$. Instead, $dim(U \times W) = dim(U)+dim(W)$. So for instance $\textbf{R}^3 \times \textbf{R}^5 \cong \textbf{R}^8$ but is not isomorphic to $\textbf{R}^{15}$. Therefore it will turn out that $\textbf{R}^8\textbf{/}\textbf{R}^3 \cong \textbf{R}^5$ and $\textbf{R}^{15}\textbf{/}\textbf{R}^3 \cong \textbf{R}^{12} \ncong \textbf{R}^5$.\\ 
+
+Let $V$ be a finite dimensional vector space of dimension $k$ let $U$ be a subspace of $V$. Therefore $U$ has dimension $m$ for some  $0 \leq m \leq k$. Let $W$ be any finite dimensional vector space of dimension $k-m$. Therefore, $dim(W \times U) = dim(W)+dim(U) = (k - m) + m = k = dim(V)$. By 3.59 $V \cong W \times U$, vector spaces of the same dimension are isomorphic. Let $g$ be the isomorphism from $V$ to $W \times U$. 
+
+\begin{definition}
+Using the notation from the paragraph above, define the quotient $V/U$ to be the set $\{(w,U)|w \in W\}$, that is all pairs consisting of a vector $w \in W$ and the entire vector space $U$.  
+\end{definition}
+
+\begin{definition}
+Define the projection map $p: W \times U \rightarrow V/U$ as follows: for any $(w,u) \in U \times W$, $$p(w,u) = (w,U)$$ in $V/U$.
+\end{definition}
+
+Clearly, there is an isomorphism from $V/U$ to $W$, $V/U \cong W$, given by sending any element $(w,U) \in V/U$ to the $w \in W$ appearing in the first coordinate. 
+
+\begin{definition}
+Let $V/U$ be a quotient and $g$ be the isomorphism from $V$ to $W \times U$. The quotient function, denoted, $\pi$, is defined to be the map which takes any $v \in V$, first by $g$ to an element  $g(v) = (w,u) \in W\times U$ then down $p$ to the element $p(g(v)) = (w,U) \in V/U$.
+
+\begin{center}
+\begin{tikzcd}
+V \arrow[r, "g"] \arrow[dr,"\pi"'] & W\times U \arrow[d, "p"] \\ 
+ &  V/U
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+Let us now connect this definition with Axler's. Recall that our decomposition of $V$ as a product in which $U$ appears was dependent on the fact that we know the dimension of the product in terms of the dimensions of the factors. For any subspace $U$ of $V$ there exists a subspace $$W \times U \cong V$$ because there always exists a vectorspace $W$ such that $dim(W)+dim(U) = dim(V)$.\\
+
+Looking at theorem 2.34 of the text ``Every subspace of $V$ is part of a direct sum equal to $V$" gives us an alternative decomposition: For any subspace $U$ of $V$ there exists a subspace $W$ such that $$W \oplus U = V$$ and theorem 2.43 ``Dimension of a sum" together with 1.45 guarantee that $dim(W)+dim(U) = dim(V)$. Using Axler's decomposition, we can also define $V/U$. This is what he does in the text. Whichever decomposition is chosen to derive $W$, the relation $dim(W)+dim(U) = dim(V)$ is guaranteed and therefore the resulting quotient $V/U$ has dimension $dim(V)-dim(U)$ either way.  So by $3.59$ my construction is isomorphic to Axler's, ``Dimension shows whether or not vectorspaces are isomorphic."  
+
+\subsection*{exercises}
+\begin{enumerate}
+\item Prove that the projection map $p$ of definition 7 is a surjective linear map.
+\item Prove that the composition of an isomorphism and a surjection is again surjective. 
+\item Conclude that $\pi$ of definition 8 is surjective. 
+\end{enumerate}
+
+
+ 
+\end{document}

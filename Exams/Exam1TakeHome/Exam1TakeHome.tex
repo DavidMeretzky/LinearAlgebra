@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 1 Take Home
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday October 1st, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+
+\subsubsection*{\textbf{Bonus 10 points}}
+Let $S$ be the unit sphere in $\mathbb{R}^3$. The set of points of the sphere does not make up a vectorspace because vector addition is not commutative.\\ 
+
+In this bonus problem we will describe a way to define a vectorspace for each point of the sphere. For any point $x \in S$ we will define a vector space $T_x$, the tangent plane at a point of the sphere. This is a plane in $\mathbb{R}^3$ tangent to the sphere at the point in question.\\  
+
+Let $\gamma(t)$ be a curve which runs along the surface of the sphere.  Let $t$ be a time parameter in the range from $(-1,1)$. Thus a curve is a function $\gamma(t):(-1,1) \rightarrow S$. The derivative of $\gamma(t)$ at a time $t=\alpha$ is the velocity vector of the curve at the time $\alpha \in (-1,1)$. For instance we denote the velocity vector at $t=0$, $\gamma'(0)$.\\
+
+For a point $x\in S$ define the vector space $T_x$ as follows:\\
+
+Consider the collection of all curves $\gamma(t):(-1,1) \rightarrow S$ such that $\gamma(0) = x$. Some of these curves have the same velocity vector at the point $x$, i.e. there exist two curves $\gamma_1$, $\gamma_2$ such that $\gamma_1'(0) = \gamma_2'(0)$. A vector in $T_x$ is going to be the collection of all curves which have a particular velocity vector at the point $t=0$. For instance, pick a curve $\gamma$ with velocity vector at $t=0$ given by $\gamma'(0)$. Let $[\gamma]$ denote the collection of all curves which have the same velocity vector at $x$. This is a vector in $T_x$.  Note that if $\gamma_1'(0) = \gamma_2'(0)$ then $[\gamma_1] = [\gamma_2]$.\\
+
+The next question is how do we define vector space operations? How do we define addition of two collections of functions? What should we mean by $[\gamma]+[\delta]$? What do we mean by multiplication by a scalar $\lambda[\gamma]$? What is the zero vector?
+
+\begin{definition}[Addition in $T_x$]
+Define $[\gamma]+[\delta]$ as follows: pick any $\gamma \in [\gamma]$ and any $\delta \in [\delta]$ and take the sum of their velocity vectors $\gamma'(0)+\delta'(0)$. Then pick any curve $\tau:(-1,1)\rightarrow S$ such that $\tau(0)=x$ and $\tau'(0)=\gamma'(0)+\delta'(0)$. Define $[\gamma]+[\delta] = [\tau]$.  We can also write $[\gamma]+[\delta]$ as $[\gamma+\delta]$.
+\end{definition}
+
+\begin{problem}
+Show that this definition of addition is independent of whichever vectors are choosen out of the collections $[\gamma]$ and $[\delta]$ i.e. pick $\gamma_1,\gamma_2 \in [\gamma]$, (note $[\gamma_1] = [\gamma_2] = [\gamma]$), also pick $\delta_1,\delta_2 \in [\delta]$ show that $[\gamma_1 + \delta_1] = [\gamma_1 + \delta_2]=[\gamma_2 + \delta_1]=[\gamma_2 + \delta_2]$. 
+\end{problem}
+
+\begin{problem}
+Define the $0$ vector and define multiplication by a scalar $\lambda$. You will also need to show that these definitions are independent of whichever vectors are chosen out of $[\lambda\gamma]$ and $[0]$. 
+\end{problem}
+
+\begin{problem}
+Verify that $T_x$ is a vectorspace. 
+\end{problem}
+
+Recall our discussion of the notation $\textbf{F}^S$ meaning the collection of functions from $S$ to $\textbf{F}$.
+
+\begin{problem}
+Prove that for positive integers $a$, $b$, and $c$, $a^{b+c} = a^b\cdot a^c$ and $a^{b^c} = a^{bc}$. Along the way you will need to prove that certain collections of functions are in 1-1 correspondence. 
+\end{problem}
+
+\end{document}

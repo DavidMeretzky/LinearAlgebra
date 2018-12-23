@@ -1,0 +1,165 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 1 Take Home Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday October 15th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+
+\subsubsection*{\textbf{Bonus 10 points}}
+Let $S$ be the unit sphere in $\mathbb{R}^3$. The set of points of the sphere does not make up a vectorspace because vector addition is not commutative.\\ 
+
+In this bonus problem we will describe a way to define a vectorspace for each point of the sphere. For any point $x \in S$ we will define a vector space $T_x$, the tangent plane at a point of the sphere. This is a plane in $\mathbb{R}^3$ tangent to the sphere at the point in question.\\  
+
+Let $\gamma(t)$ be a curve which runs along the surface of the sphere.  Let $t$ be a time parameter in the range from $(-1,1)$. Thus a curve is a function $\gamma(t):(-1,1) \rightarrow S$. The derivative of $\gamma(t)$ at a time $t=\alpha$ is the velocity vector of the curve at the time $\alpha \in (-1,1)$. For instance we denote the velocity vector at $t=0$, $\gamma'(0)$.\\
+
+For a point $x\in S$ define the vector space $T_x$ as follows:\\
+
+Consider the collection of all curves $\gamma(t):(-1,1) \rightarrow S$ such that $\gamma(0) = x$. Some of these curves have the same velocity vector at the point $x$, i.e. there exist two curves $\gamma_1$, $\gamma_2$ such that $\gamma_1'(0) = \gamma_2'(0)$. A vector in $T_x$ is going to be the collection of all curves which have a particular velocity vector at the point $t=0$. For instance, pick a curve $\gamma$ with velocity vector at $t=0$ given by $\gamma'(0)$. Let $[\gamma]$ denote the collection of all curves which have the same velocity vector at $x$. This is a vector in $T_x$.  Note that if $\gamma_1'(0) = \gamma_2'(0)$ then $[\gamma_1] = [\gamma_2]$.\\
+
+The next question is how do we define vector space operations? How do we define addition of two collections of functions? What should we mean by $[\gamma]+[\delta]$? What do we mean by multiplication by a scalar $\lambda[\gamma]$? What is the zero vector?
+
+\begin{definition}[Addition in $T_x$]
+Define $[\gamma]+[\delta]$ as follows: pick any $\gamma \in [\gamma]$ and any $\delta \in [\delta]$ and take the sum of their velocity vectors $\gamma'(0)+\delta'(0)$. Then pick any curve $\tau:(-1,1)\rightarrow S$ such that $\tau(0)=x$ and $\tau'(0)=\gamma'(0)+\delta'(0)$. Define $[\gamma]+[\delta] = [\tau]$.  We can also write $[\gamma]+[\delta]$ as $[\gamma+\delta]$.
+\end{definition}
+
+\begin{problem}
+Show that this definition of addition is independent of whichever vectors are choosen out of the collections $[\gamma]$ and $[\delta]$ i.e. pick $\gamma_1,\gamma_2 \in [\gamma]$, (note $[\gamma_1] = [\gamma_2] = [\gamma]$), also pick $\delta_1,\delta_2 \in [\delta]$ show that $[\gamma_1 + \delta_1] = [\gamma_1 + \delta_2]=[\gamma_2 + \delta_1]=[\gamma_2 + \delta_2]$. 
+\end{problem}
+
+\begin{solution}
+Let $\gamma_1,\gamma_2 \in [\gamma]$ and $\delta_1,\delta_2 \in [\delta]$. by definition form the following sums $[\gamma_1 + \delta_1], [\gamma_1 + \delta_2], [\gamma_2 + \delta_1], [\gamma_2 + \delta_2]$. 
+
+That is, pick any $\tau_1:(-1,1)\rightarrow S$ such that $\tau_1(0)=x$ and $\tau_1'(0)=\gamma_1'(0)+\delta_1'(0)$. Then define $[\gamma_1 + \delta_1] = [\tau_1]$. Similarly, define $[\gamma_1 + \delta_2] = [\tau_2]$ where $\tau_2:(-1,1)\rightarrow S$ such that $\tau_2(0)=x$ and $\tau_2'(0)=\gamma_1'(0)+\delta_2'(0)$. Continue similarly to define $[\gamma_2 + \delta_1]$ and $[\gamma_2 + \delta_2]$ as $[\tau_3]$ and $[\tau_4]$.
+
+It remains now to show that $[\tau_1] = [\tau_2] = [\tau_3] = [\tau_4]$. 
+
+Since $\tau_1'(0)=\gamma_1'(0)+\delta_1'(0)$ and $\gamma_1'(0)=\gamma_2'(0)$ and $\delta_1'(0)=\delta_2'(0)$, we have $$\tau_1'(0)=\gamma_1'(0)+\delta_1'(0) = \gamma_1'(0)+\delta_2'(0) = \tau_2'(0) = \gamma_2'(0)+\delta_1'(0) = \tau_3'(0) = \gamma_2'(0)+\delta_2'(0) = \tau_4'(0)$$ All $\tau$s must be in the same $[]$ vector.  It follows that $[\tau_1] = [\tau_2] = [\tau_3] = [\tau_4]$. 
+
+No matter how we pick $\gamma$ from $[\gamma]$ or $\delta$ from $[\delta]$ we will end up with the same $[\tau]$ vector as the sum $[\gamma] = [\delta]$. 
+\end{solution}
+
+\begin{problem}
+Define the $0$ vector and define multiplication by a scalar $\lambda$. You will also need to show that these definitions are independent of whichever vectors are chosen out of $[\lambda\gamma]$ and $[0]$. 
+\end{problem}
+
+\begin{solution}
+Define the $0$ vector as follows: take the collection of all paths $\zeta:(-1,1)\rightarrow S$ such that $\zeta(0) = 0$ and $\zeta'(0) = 0$. Call this collection $[0]$.  Side note: if we take any path $\gamma(t):(-1,1)\rightarrow S$ and change precompose with the function $t^3:(-1,1) \rightarrow (-1,1)$, we obtain the path $\gamma(t^3): (-1,1) \rightarrow (-1,1) \rightarrow S$ with derivative $\gamma'(t^3)t^2$ which equals $0$ at $t = 0$. So $\gamma(t^3) \in [0]$. 
+
+For $[\gamma] + [0]$. This is well defined (independent of which $\gamma$ or $0$ we choose) because addition is well defined. We now have to check that this sum is again equal to just $[\gamma]$. Pick $\gamma \in [\gamma]$ and $\zeta \in [0]$. Let $\tau$ be a path going through $x$ at $t=0$ such that $$\gamma'(0)+\zeta'(0) = \tau'(0)$$ But by defintion of $[0]$ we have that $\zeta'(0) = 0$. Therefore the above equation is simply $$\gamma'(0) = \tau'(0)$$ Thus $\tau \in [\gamma]$ which implies that $[tau] = [\gamma]$ since $[\gamma] + [0]$ is defined to be $[\tau]$, we have that $[\gamma] + [0] = [\gamma]$.\\ 
+
+For a scalar $\lambda \in \textbf{F}$ define $\lambda[\gamma]$ as follows. Take $\gamma \in [\gamma]$ pick any $\tau:(-1,1)\rightarrow S$ such that $\tau(0)=x$ and $\tau'(0)=\lambda\gamma'(0)$. Define $\lambda[\gamma] = [\tau]$. To verify that this is well defined follow much the same arugment that we used for addition pick any $\gamma_1$ and $\gamma_2$ in $[\gamma]$. Pick any $\tau_1, \tau_2:(-1,1)\rightarrow S$ such that $\tau_1(0) = \tau_2(0)=x$, $\tau_1'(0)=\lambda\gamma_1'(0)$, and $\tau_2'(0)=\lambda\gamma_2'(0)$. Since $\gamma_1'(0) = \gamma_2'(0)$ it follows that $\tau_1'(0) = \tau_2'(0)$ which implies that $[\tau_1] = [\tau_2]$. Thus the operation of scalar multiplication is well defined. 
+
+Challenge: Pick a scalar $\lambda$. Find a differentiable function $f:(-1,1) \rightarrow (-1,1)$ such that $f(0) = 0$ and $f'(0) = \lambda$. Use this to create a specific map from $[\gamma] \rightarrow \lambda[\gamma]$.  
+\end{solution}
+
+\begin{problem}
+Verify that $T_x$ is a vectorspace. 
+\end{problem}
+
+\begin{solution}
+Everything should follow from arguements similar to those above. I will show one of the distributive properties. 
+
+Claim: $\lambda[\gamma+\delta] = \lambda[\gamma]+\lambda[\delta]$.\\
+
+Pick a curve from the vector on each side. Let $\tau_1 \in \lambda[\gamma+\delta]$ and $\tau_2 \in \lambda[\gamma]+\lambda[\delta]$. By unwraping the definition we see that $\tau_1'(0) = \lambda(\gamma_1'(0)+\delta_1'(0))$. Similarly, $\tau_2'(0) = \lambda\gamma_2'(0)+\lambda\delta_2'(0)$. Conclude based on thee definitions that $\tau_1'(0) = \tau_2'(0)$ due to the equalities of $\lambda = \lambda$, $\gamma_1'(0) = \gamma_2'(0)$, and $\delta_1'(0) = \delta_2'(0)$.
+\end{solution}
+
+Recall our discussion of the notation $\textbf{F}^S$ meaning the collection of functions from $S$ to $\textbf{F}$.
+
+\begin{problem}
+Prove that for positive integers $a$, $b$, and $c$, $a^{b+c} = a^b\cdot a^c$ and $a^{b^c} = a^{bc}$. Along the way you will need to prove that certain collections of functions are in 1-1 correspondence. 
+\end{problem}
+
+\begin{solution}
+We will translate integers to sets of size that integer. For instance 4 becomes \{1,2,3,4\}. For the integer $a$ I denote the set of size $a$ as $A$. By cardinality I mean the size of a set, that is the number of elements it contains. \\ 
+
+We now need to translate the operations $*$, $+$ and taking powers.  Examine $A^B$ where $A$ and $B$ are sets. In $\textbf{F}^S$ notation, $A^B$ is the collection of functions from $B$ to $A$. So the elements of $A^B$ are functions from $B$ to $A$. This is our exponentiation for sets.\\
+
+What is the proper analogue for the multiplication $ab$? Examine $A\times B$. What is an operation like multiplication that we can do to two sets such that the resulting set has cardinality which equals the products of the cardinalities of the  two sets? Cartesian product! The elements of $A\times B$ are going to be all possible pairs of elements one from $A$ one from $B$. Something like $(a,b)$. Explicitly $A\times B = \{(a,b) \ : \ a \in A, b \in B\}$. \\ 
+
+For instance: $A^B \times A^C$ is the cartesian product of two sets of functions. An element of $A^B \times A^C$ looks like $(f,g)$ where $f \in A^B$ is a function from $B$ to $A$. Similarly $g \in A^C$ is a function from $C$ to $A$.\\ 
+
+How do we add sets, $B + C$? We could take the union of these two sets so if $B = \{b_1,...,b_n\}$ and $C = \{c_1,...c_m\}$ Let $B + C = \{b_1...b_n,c_1,...,c_m\}$.\\ 
+
+So what is $A^{B+C}$? It is the collection of functions from the set $B+C$ to the set $A$. Your task was to match up each pair of functions in $A^B \times A^C$ to a function in $A^{B+C}$. In what sense does a pair of functions $(f,g)$ give me all the information I need to find a function from $B+C$ to $A$?\\ 
+
+Said more simply: Given a pair of functions $(f,g)$ which is an element of $A^B \times A^C$, define a function from $B+C$ to $A$. Say why this association is unique i.e. given another different pair $(h,e)$ show it defines a different function from $B+C$ to $A$.\\ 
+
+By ``match up" I mean you need to find an injective and surjective function. If two sets have a 1-1 correspondence (injective and surjective function) then they have the same cardinality. Then you're finished with the first part.
+
+Define a function $F:A^B \times A^C \rightarrow A^{B+C}$ as follows: 
+For any $(f,g) \in A^B \times A^C$, $F(f,g):B+C \rightarrow A$ as follows: pick $x \in B+C$. If $x \in B$, then define $F(f,g)(x) = f(x)$. If $x \in C$, then define $F(f,g)(x) = g(x)$.\\
+
+Note that we run into problems if $B$ and $C$ have elements in common. To avoid this we write the subscripts to keep track of which elements in the union of $B$ and $C$ came from $B$ or from $C$. This is called the disjoint union. Really what we are doing is saying let $B = \{1_B,2_B,3_B,....n_B\}$ and $C = \{1_C,2_C,3_C,...m_C\}$. Now their union is a set of cardinality $n+m$ instead of a cardinality $n+m - (\textit{number of elements that they share})$. \\
+
+It remains to show that $F$ is well defined, injective, and surjective. Also we need to show that $F(f,g)$ is well defined to be sure that $F$ actually outputs functions from $B+C$ to $A$. Just to keep track of what is going on: $F:A^B \times A^C \rightarrow A^{B+C}$ while $F(f,g) \in A^{B+C}$ and therefore $F(f,g):B+C \rightarrow A$.\\  
+
+Well defined means it is a well defined function, this is equivalent to the converse (or inverse) of injectivity, it is also equivalent to saying it passes the vertical line test or that it does not split apart inputs. For each input in the domain $F$ must have exactly $1$ output.\\   
+
+Let's first show that $F(f,g)$ is well defined. Due to the fact that $f$ and $g$ are functions who's domain does not overlap (because we took disjoint union instead of union) $F(f,g)$ is a well defined function. That is, the only possible problem would be if there were an $x \in B \cap C$ and $f(x) \neq g(x)$, then $F(f,g)(x)$ would not have a well defined value (one ``$x$" input, $2$ possible ``$y$" outputs, fails vertical line test). But because we indexed all the elements of $B$ and $C$ to make them distinct as elements of $B+C$, this situation cannot happen.\\ 
+
+Now we have to show that $F$ is well defined:\\
+
+To do this by definition, take the converse of definition $3.15$. Suppose $(f,g) = (e,h)$ then show that $F(f,g) = F(e,h)$. Two functions are equal if they are equal on all inputs and have the same domain. We can see that $F(f,g)$ and $F(e,h)$ have the same domain $B+C$. Let $x_B \in B+C$ then $$F(f,g)(x_B) = f(x) = e(x) = F(e,h)(x_B)$$ because if $(f,g) = (e,h)$ then $f = e$ and $g = h$ where $x \in B$. Similarly let $x_C \in B+C$ then $$F(f,g)(x_C) = g(x) = h(x) = F(e,h)(x_C)$$ where $x \in C$.  Thus $F$ is well defined because $F(f,g)$ and $F(e,h)$ are equal as functions from $B+C$ to $A$.\\
+
+To show that $F$ is injective we need to verify directly definition 3.15:\\
+
+Suppose that $F(f,g) = F(e,h)$ then show $(f,g) = (e,h)$. To do this we need to show that $f = e$ and $g = h$. By definition for $x_B \in B+C$ $F(f,g)(x_B) = f(x)$ similarly, for $x_C \in B+C$ $F(f,g)(x_C) = g(x)$. Note that if $F(f,g) = F(e,h)$, then for $x \in B$ $$e(x) = F(e,h)(x_B) = F(f,g)(x_B) = f(x)$$ and for $x \in C$ $$h(x) = F(e,h)(x_C) = F(f,g)(x_C) = g(x)$$ from which we can conclude that $f = e$ and $g = h$. \\
+
+Showing surjectivity of $F$ is slightly different. Use definition 3.20. Pick any $H \in A^{B+C}$, the range of $F$. We need to show that there is some $(f,g) \in A^B \times A^C$ such that $F(f,h) = H$.\\
+
+Restricting $H$ to the $x_B$s we obtain a function $H|_B:B \rightarrow A$. For $x \in B$, $H|_B(x)$ is defined as $H|_B(x) = H(x_B)$. Similarly, define $H|_C$. So $H|_B \in A^B$ and $H|_C \in A^C$. It should be simple to check that $F(H|_B,H|_C) = H$ as a function from $B+C$ to $A$.\\ 
+
+This concludes the proof that $F$ is well defined, injective, surjective and has the correct range. Therefore $A^B \times A^C$ and $A^{B+C}$ have the same number of elements. Thus for sets $A$, $B$, and $C$ with cardinality $a$, $b$, and $c$, we see that $a^b * a^c = a^{b+c}$.\\
+
+The proof of $a^{b^c} = a^{bc}$ is similar. Give it another try after reading and digesting this solution. 
+
+\end{solution}
+
+\end{document}

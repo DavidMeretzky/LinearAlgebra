@@ -1,0 +1,157 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260\\ 10/17 Notes Continued \\
+Introduction to Chapter 5
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+November 5th, 2018
+} 
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+%\renewcommand{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+In chapter 5 we will begin a systematic study of how certain bases are more useful than others when working with specific operators. As an introduction to this chapter we will revisit some important examples.
+
+\subsection*{Differentiation with different bases}
+\ \ \ \  We saw in chapter $3$ that the application of a linear map $T$ on a vector $v \in V$ gives us a unique vector $Tv \in W$ regardless of how we express $v$ in terms of a basis for $V$. Here is the answer to the exercise at the end of the 10/17/18 notes:\\
+
+Let $B_1 = 1,x,x^2$ and $B_2 = 1, (x-3), (x-3)^2$ be bases for $\mathcal{P}_2(\textbf{F},x)$. It is easy to check that the matricies associated to the differentiation operator $D \in \mathscr{L}(\mathcal{P}_2(\textbf{F},x))$ \footnote{recall that the extra arguement $x$ of $\mathcal{P}_2(\textbf{F},x)$ signifies that we are talking about the vectorspace of polynomials of degree at most 2 with coefficients in $\textbf{F}$ in indeterminate $x$} with respect to these two bases are the same. That is, $$[D]_{B_1}^{B_1} = [D]_{B_2}^{B_2} =
+\begin{pmatrix} 0 & 1& 0  \\
+ 0 & 0& 2   \\
+  0 & 0& 0   \\
+\end{pmatrix}
+$$
+
+The entries of column $1$ of the matrix are the image of the first basis vector $1$ under the differentiation map represented in terms of the bases, That is $[D1]_{B_1} = [D1]_{B_2}$. We check that in either basis the results are the same: $$D(1) = 0 = 0(1)+0x+0x^2 = 0(1)+0(x-3)+0(x-3)^2.$$
+
+Taking the second basis vector of $B_1$, $x$, and representing the image $Dx$ in terms of the basis $B_1$, we have $Dx = 1(1)+0x+0x^2$.  Thus the associated column vector, $[Dx]_{B_1}$ matches the second column of $[D]_{B_1}^{B_1}$. Similarly, representing $D(x-3)$ with respect to $B_2$, we have $D(x-3) = 1(1)+0(x-3)+0(x-3)^2$ and therefore $[D(x-3)]_{B_2}$ also matches the second column. \\
+
+Let us also check that $[Dx^2]_{B_1} = [D(x-3)^2]_{B_2}$ and that this column vector matches the third column of the matrix. With respect to $B_1$, $Dx^2 = 0(1)+2x+0x^2$. With respect to $B_2$ $D(x-3)^2 = 0(1)+2(x-3)+0(x-3)^2$. Thus the third columns match and the matricies are the same as desired. 
+
+Now lets show that the vector $p(x) = 2 + 9x + 5x^2$ looks different with respect to these two bases. 
+
+Clearly, $$[p(x)]_{B_1} = \begin{pmatrix} 2  \\
+ 9   \\
+  5   \\
+\end{pmatrix}$$ however representing $p(x)$ with respect to $B_2$ is slightly more complicated.\\
+
+Only $(x-3)^2$ has an $x^2$ term so for now, $p(x) = a(1)+b(x-3)+5(x-3)^2$. Now we may solve for $b$. We know that $p(x)$ must have $9$ as the coefficient for the $x$ term. Expanding $5(x-3)^2 = 5x^2 - 30x +45$ so $b = 39$. We now have $p(x) = 2 + 9x + 5x^2 = a(1)+39(x-3)+5(x-3)^2 = a - 39(3) + 45 + 9x + 5x^2$. Thus $2 = a - 117 + 45$. So $a = 74$ and $p(x) = 74(1)+39(x-3)+5(x-3)^2$. Thus $$[p(x)]_{B_2} = \begin{pmatrix} 74  \\
+ 39   \\
+  5   \\
+\end{pmatrix}$$
+
+Performing the matrix multiplication, $[D]_{B_1}^{B_1}[p(x)]_{B_1} = [D(p(x))]_{B_1}$,  $$
+\begin{pmatrix} 0 & 1& 0  \\
+ 0 & 0& 2   \\
+  0 & 0& 0   \\
+\end{pmatrix}\begin{pmatrix} 2  \\
+ 9   \\
+  5   \\
+\end{pmatrix} = \begin{pmatrix} 9  \\
+ 10   \\
+  0   \\
+\end{pmatrix} 
+$$
+We have that in terms of $B_1$ $D(p(x)) = 9(1)+10x+0x^2$.\\
+
+We also have that with respect to the second basis, $[D]_{B_2}^{B_2}[p(x)]_{B_2} = [D(p(x))]_{B_2}$,  $$
+\begin{pmatrix} 0 & 1& 0  \\
+ 0 & 0& 2   \\
+  0 & 0& 0   \\
+\end{pmatrix}\begin{pmatrix} 74  \\
+ 39   \\
+  5   \\
+\end{pmatrix} = \begin{pmatrix} 39  \\
+ 10   \\
+  0   \\
+\end{pmatrix}$$
+
+So in terms of $B_2$ $D(p(x)) = 39(1) + 10(x-3) + 0(x-3)^2$. Checking this is correct: $10x - 30 + 39 = 10x + 9$ as desired.\\
+
+Although we got the same answer, the computations with one of these two bases was much more difficult. An even more awful supposition: suppose we had used the basis $B_3 = 1$, $x$, $\frac{1}{2}(3x^2-1)$ 
+\footnote{https://en.wikipedia.org/wiki/Legendre\_polynomials The legendre polynomails are a special basis for $\mathcal{P}(\textbf{F},x)$. In chapter $6$ we will have a notion of angle between two vectors. We will see that the vectors of $B_3$ stick out at "right angles" to one another, whatever that means.}. You should check that 
+$[D]^{B_3}_{B_3} \neq [D]^{B_1}_{B_1} = [D]^{B_2}_{B_2}$. Furthermore, check that $B_3$ is a basis. Find $[D]^{B_3}_{B_3}$ and $[p(x)]_{B_3}$. When you are finished, see the section \textbf{Answers}. 
+
+Carry out the multiplication $[D]_{B_3}^{B_3}[p(x)]_{B_3}$ to obtain  $[D(p(x))]_{B_3}$. Show that unbracketing this expression also gives us the correct answer for $D(p(x))$. 
+
+Different bases result in different matrix representations of the same differentiation operator $D$. However, matrix multiplication always gives us the correct response. For any basis $B$, $[D]_{B}^{B}[p]_{B}=[Dp]_{B}$: 
+
+\begin{center}
+\begin{tikzcd}
+p \arrow[r, "D"] \arrow[d,"{[ \ \ ]}_{B}"'] & Dp \arrow[d, "{[ \ \ ]}_{B}"] \\ 
+{[p]}_B \arrow[r, "{[D]}^B_{B}"]& \dfrac{[Dp]_{B}}{[D]^B_{B}[p]_B} 
+\end{tikzcd}
+\end{center}
+
+\subsection*{Changing Basis}
+
+% Let $B_1$ and $B_2$ be bases for a vectorspace $V$. By $3.5$\footnote{Informally, if you know where the basis goes you know where everything goes. Or, a linear map is determined by how it send the basis. Or, a function of the basis extends uniquely to a linear map of the space.} there is exactly $1$ linear map that sends the first vector of $B_1$ to the first vector of $B_2$ and the second vector of $B_1$ to the second vector of $B_2$ and so on. Check that this linear map is injective and surjective. Thus it is invertable. The inverse of this map is the unique map which sends the first vector of $B_2$ to the first vector of $B_1$ and the second vector of $B_2$ to the second vector of $B_1$ and so on. Denote these maps $T$ and $T^{-1}$.
+
+Let $B_1$ and $B_2$ be bases for a vector space $V$. Let $v \in V$. Let $I$ denote the identity operator on $V$. Using matricies, $$[I]_{B_2}^{B_1}[v]_{B_1} = [Iv]_{B_2}$$ However since $Iv = v$,  we have $[Iv]_{B_2} = [v]_{B_2}$. So we have the change of basis formula for vectors: $$[I]_{B_2}^{B_1}[v]_{B_1} = [v]_{B_2}$$ The result is similar for matricies.\\
+
+Let $T$ be an operator on $V$. Let $A$, $B$, $C$, and $D$ be bases for $V$. If we have the matrix of $T$ with respect to $B$ and $C$, $[T]_{B}^{C}$, and we would like to see it with respect to $A$ and $D$, we use the following arguement. Recall that matrix multiplication was defined to preserve composition of linear maps:  $$[I]_{D}^{C}[T]_{C}^{B} = [I\circ T]^{B}_{D} = [T]^{B}_{D}$$ since $I \circ T = T$. Similarly $T = T \circ I$ gives us via precomposing, $$[I]_{D}^{C}[T]_{C}^{B}[I]^{A}_{B} = [I \circ T]^{B}_{D}[I]^{A}_{B} = [I \circ T \circ I]^{A}_{D} = [T]^{A}_{D}$$ so the change of basis formula for matricies is then: $$[I]_{D}^{C}[T]_{C}^{B}[I]^{A}_{B} = [T]^{A}_{D}$$
+
+In general $A = D$ and $B = C$. Although it is possible to represent an operator from $V$ to $V$ using two different bases we will avoid this usually.\\  
+
+You should check the following computations using the data from the running example in the previous section:
+\begin{enumerate}
+\item $$[I]_{B_1}^{B_2}[D]_{B_2}^{B_2}[I]^{B_1}_{B_2}[p]_{B_1} = [Dv]_{B_1}$$
+\item $$[I]_{B_1}^{B_2}[D]_{B_2}^{B_2}[I]^{B_1}_{B_2} = [D]^{B_1}_{B_1}$$
+\item $$[I]_{B_2}^{B_1}[D]_{B_1}^{B_1}[I]^{B_2}_{B_1} = [D]^{B_2}_{B_2}$$
+\item $$[I]_{B_3}^{B_2}[D]_{B_2}^{B_2}[I]^{B_3}_{B_2} = [D]^{B_3}_{B_3}$$
+\item $$[I]_{B_2}^{B_3}[D]_{B_3}^{B_3}[I]^{B_2}_{B_3} = [D]^{B_2}_{B_2}$$
+\end{enumerate}
+\subsection*{Answers}
+
+\begin{enumerate}
+\item $$[D]^{B_3}_{B_3} = 
+\begin{pmatrix} 0 & 1& 0  \\
+ 0 & 0& 3   \\
+  0 & 0& 0   \\
+\end{pmatrix}$$
+
+\item $$[p(x)]_{B_3} = \begin{pmatrix} 11/3  \\
+ 9   \\
+  10/3   \\
+\end{pmatrix}$$ 
+\end{enumerate}
+
+
+
+\end{document}

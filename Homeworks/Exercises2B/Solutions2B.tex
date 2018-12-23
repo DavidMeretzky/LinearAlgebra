@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 2.B Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday October 9th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Verify all the assertions in Example 2.28.
+\end{problem}
+
+\begin{solution}
+Omitted. 
+\end{solution}
+
+\begin{problem}
+Let $U$ be the subspace of $\textbf{R}^5$ defined by $$U = \{(x_1,x_2,x_3,x_4,x_5) \in \textbf{R}^5 : x_1 = 3x_2 \ and \  x_3 = 7x_4 \}$$
+\begin{enumerate}
+\item Find a basis of $U$.
+\item Extend the basis to a basis of $\textbf{R}^5$.
+\item Find a subspace $W$ of $\textbf{R}^5$ such that $\textbf{R}^5 = U \oplus W$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+\item The list $\{(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1)\}$ suffices. It is easily seen to be linearly independent.
+
+Suppose we take any vector $(x_1,x_2,x_3,x_4,x_5) \in U$. Then $$(x_1,x_2,x_3,x_4,x_5) = x_2(3,1,0,0,0) + x_4(0,0,7,1,0) + x_5(0,0,0,0,1)$$ shows that the list spans $U$. Thus it is a basis. 
+\item append the standard basis $\{(1,0,0,0,0),(0,1,0,0,0),(0,0,1,0,0),(0,0,0,1,0),(0,0,0,0,1)\}$ to the end of the list. Clearly $(0,0,0,0,1)$ is already in the list and therefore is already in it's span. We may remove it. Similarly, remove more of the vectors until we are left with a linearly independent list following the procedure of the proof of 2.33. 
+\item Taking the span of the first and third standard basis vectors gives the desired subspace $W$. 
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Prove or disprove: there exists a basis $p_0$, $p_1$, $p_2$, $p_3$ of $\mathcal{P}_3(\textbf{F})$ such that none of the polynomials $p_0$, $p_1$, $p_2$, $p_3$ has degree $2$. 
+\end{problem}
+
+\begin{solution}
+The key thing to note here is that degree is simply the largest power present in the polynomial. Therefore, $x^3 + x^2$ has degree $3$. A counter example is given by the list $1+x^3$, $x + x^3$, $x^2+x^3$, $x^3$.   
+\end{solution}
+
+\begin{problem}
+Suppose $U$ and $W$ are subspaces of $V$ such that $V = U \oplus W$. Suppose also that $u_1, ... u_m$ is a basis for $U$ and $w_1,...,w_n$ is a basis of $W$. Prove that $$u_1,...,u_m,w_1,...,w_n$$ is a basis of V. 
+\end{problem}
+
+\begin{solution}
+Note that because $U$ and $W$ form a direct sum their intersection is $\{0\}$. The $u$'s form a basis and are therefore linearly independent. We will add the $w$'s one at a time to the list of $u$'s.\\ 
+
+\textbf{Step 1}\\
+
+Adding $w_1$ we obtain $$u_1,...,u_m,w_1$$ which is still independent by the following application of the Linear Dependence Lemma. Suppose the list were dependent. By the lemma, one of the elements would be in the span of the previous ones. Since $$u_1,...,u_m$$ is independent, $w_1$ must be the element in the span of the $u$'s. This however would contradict the fact that $U$ and $W$ has intersection $\{0\}$.\\ 
+
+\textbf{Step j}\\
+
+Adding $w_j$ to the list obtained in step $j-1$ we obtain the list $$u_1,...,u_m,w_1,...w_{j-1}, w_j$$ which is clearly still linear independent because $w_j$ cannot be in the span of the previous elements. Suppose $$w_j = \alpha_1 u_1 + ... + \alpha_m u_m + \beta_1 w_1 + ...+ \beta_{j-1}w_{j-1}$$ then $$w_j -( \beta_1 w_1 + ...+ \beta_{j-1}w_{j-1}) = \alpha_1 u_1 + ... + \alpha_m u_m $$ which implies since the intersection of $U$ and $W$ is the $0$ vector that $$w_j-( \beta_1 w_1 + ...+ \beta_{j-1}w_{j-1}) = 0.$$ The equation above contradicts the linear independence of the $w$'s and therefore $$u_1,...,u_m,w_1,...w_{j-1}, w_j$$ is linearly independent.\\ 
+
+We may repeat step $j$ until all of the $w$'s are added.\\
+
+Note that any vector in $V$ can be written as a sum of a vector in $U$ plus a vector in $W$. It follows that the list created at the final step spans $V$. Since it is also linearly independent, the list is a basis.  
+\end{solution}
+\end{document}

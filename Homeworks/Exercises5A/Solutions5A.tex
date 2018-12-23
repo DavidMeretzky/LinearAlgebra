@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 5.A Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday December 10th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(V)$ and $U$ is a subspace of $V$. Prove that if $U \subseteq null \ T$ then $U$ is $T$ invariant. Prove that if $Ran \ T \subseteq U$ then $U$ is $T$ invariant.   
+\end{problem}
+
+\begin{solution}
+Let $u \in U$. Suppose $U \subseteq null \ T$. Then $Tu = 0 \in U$ since $U$ is a subspace and therefore contains $0$.  Now suppose that $Ran \ T \subseteq U$, then $Tu \in Ran \ T \subseteq U$ so again, $Tu \in U$. 
+\end{solution}
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(\textbf{R}^2)$ defined by $T(x,y) = (-3y,x)$. Find the eigenvalues of $T$. 
+\end{problem}
+
+\begin{solution}
+Suppose that $(x,y)$ is an eigenvector for $T$ with eigenvalue $\lambda$. Then $T(x,y) = \lambda(x,y)$. Thus $(-3y,x)= \lambda(x,y)$. So $-3y = \lambda x$ and $x = \lambda y$. Thus $-3y = \lambda^2 y$. It follows that $-3 = \lambda^2$. So $\lambda = \pm \sqrt{-3} = \pm i\sqrt{3}$. Since $\pm i\sqrt{3}$ does not lie in $\textbf{R}$ $T$ has no eigenvectors. 
+\end{solution}
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(\textbf{F}^2)$ defined by $T(w,z) = (z,w)$. Find the eigenvalues of $T$. 
+\end{problem}
+
+\begin{solution}
+Suppose that $(w,z)$ is an eigenvector for $T$ with eigenvalue $\lambda$. Then $T(w,z) = \lambda(w,z)$. Thus $(z,w)= \lambda(w,z)$. So $z = \lambda w$ and $w = \lambda z$. Thus $z = \lambda^2 z$. It follows that $1 = \lambda^2$. So $\lambda = \pm 1$. Clearly $(1,1)$ is an eigenvector with eigenvalue $1$. Suppose $\lambda = -1$, then if $(w,z)$ is an eigenvector we have, $(z,w)= -1(w,z)$. Thus $z = -w$ and $w = -z$.  It follows that $(1,-1)$ is an eigenvector with eigenvalue $-1$. Thus the eigenvectors are those non-zero vectors in the span of the vectors $(1,1)$ and $(1,-1)$. 
+\end{solution}
+
+\begin{problem}
+Define $T \in \mathscr{L}(F^3)$ by $T(z_1,z_2,z_3) = (2z_2,0,5z_3)$. Find all eigenvectors and eigenvalues. 
+\end{problem}
+\begin{solution}
+Clearly, all non-zero vectors in the span of $(0,0,1)$ are eigenvectors with eigenvalue $5$. Also all non-zero vectors in the span of $(1,0,0)$ are eigenvectors with eigenvalue $0$. Since eigenvectors with distinct eigenvalues are linearly independent. If there was another eigenvector it would have to be $(0,1,0)$. The equation $\lambda(0,1,0) = (2,0,0)$ has no solutions. Thus there are no more eigenvectors with eigenvalues different than $0$ and $5$. But $dim(Ker(T-0I)) = dim(Ker(T-5I)) = 1$, so there are no more eigenvectors with eigenvalue $0$ or $5$. 
+\end{solution}
+
+\begin{problem}
+Define $T \in \mathscr{L}(\textbf{F}^n)$ by $T(x_1,...,x_n) = (x_1,2x_2,3x_3,...,nx_n)$. Find all eigenvalues and eigenvectors.  Find all invariant subspaces of T. 
+\end{problem}
+
+\begin{solution}
+Let $E = e_1,...,e_n$ be the standard basis. It is easy to see that each $e_i$ is an eigenvector with eigenvalue $i$. Clearly the span of each $e_i$ is an invariant subspace. 
+I claim that every subspace $U$ of $V$ of the form $span(e_i)\oplus span(e_j) \oplus ... \oplus span(e_l)$ is $T$ invariant. Let $u \in span(e_i)\oplus span(e_j) \oplus ... \oplus span(e_l)$ for some collection $e_i,e_j,...,e_l$ within $E$. We see that $Tu = a_iTe_i+...+a_lTe_l = ia_ie_i + ...+la_le_l \in span(e_i)\oplus span(e_j) \oplus ... \oplus span(e_l)$. Note however, that $e_1+e_2$ is not an eigenvector.
+\end{solution}
+
+\begin{problem}
+Find all eigenvalues and eigenvectors of the differentiation operator on $\mathcal{P}(\textbf{F},x)$. 
+\end{problem}
+
+\begin{solution}
+Suppose $p(x) = a_0+a_1x+...a_nx^n$ such that $Dp(x) = \lambda p(x)$. The coefficient of the $x^n$ term in $Dp(x)$ is $0$. Thus $a_n\lambda = 0$ so $\lambda = 0$.  Thus $\lambda p(x) = Dp(x)$ iff $p(x) = c$ in which case $p(x)$ is a non-zero constant polynomial with eigenvalue $0$. 
+\end{solution}
+
+Note: if we allow extend the definition of $\mathcal{P}(\textbf{F},x)$ to include trigonometric functions, we have  $De^{\lambda x} = \lambda e^{\lambda x}$. Does $D^2$ have eigenvectors? Does $D^3$, or $D^4$?
+
+\end{document}

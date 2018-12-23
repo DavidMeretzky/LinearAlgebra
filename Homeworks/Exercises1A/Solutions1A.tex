@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 1.A Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Tuesday August 21th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Suppose $a$ and $b$ are real numbers, not both $0$. Find real numbers $c$ and $d$ such that $\frac{1}{(a+bi)} = c+di$.
+\end{problem}
+
+\begin{solution}
+Notice that we can multiply the denominator by it's conjugate: $\frac{1}{(a+bi)}*1 = \frac{1}{(a+bi)}*\frac{(a-bi)}{(a-bi)} = \frac{(a-bi)}{(a^2+b^2)} = \frac{a}{a^2+b^2}-\frac{b}{a^2+b^2}i$. Let $c  = \frac{a}{a^2+b^2}$ and $d = -\frac{b}{a^2+b^2}$. 
+\end{solution}
+
+This problem shows that every complex number has a multiplicative inverse. We can then be sure that our definition of division for complex numbers from class will hold, that is for $\alpha \in \mathbb{C}$ where $\alpha \neq 0$. This is exactly the requirement that for $\alpha = a+bi$, $a$ and $b$ are real numbers which are not both $0$.
+
+\begin{problem}
+Verify properties of $\mathbb{C}$: 
+
+Note from class: Think of $\lambda$ as a scalar or number like something in $\mathbb{F}$ and think of $\alpha$, $\beta$, and $\gamma$ as vectors in $\mathbb{F}^n$, (in this case the vectors are actually in $\mathbb{C}^n$) for $n = 1$.  
+
+Show that for all $\alpha$, $\beta$, $\gamma$ $\lambda$ in $\mathbb{C}$. 
+\begin{enumerate}
+\item $\alpha + \beta = \beta + \alpha$  commutativity of addition
+\item $(\alpha+\beta)+\gamma = \alpha+(\beta + \gamma)$ associativity of addition
+\item $(\alpha\beta)\gamma = \alpha(\beta\gamma)$ commutativity of multiplication
+\item Show that for every $\alpha$ there is a $\beta$ so that $\alpha + \beta = 0$
+\item Show that for every $\alpha$ there is a $\beta$ so that $\alpha\beta = 1$
+\item $\lambda(\alpha+\beta) = \lambda\alpha +\lambda\beta$
+\end{enumerate}
+\end{problem}
+\begin{solution}
+Let $\alpha = a+bi$, $\beta = c+di$ $\gamma = (e+fi)$ and $\lambda = (h+ki)$
+\begin{enumerate}
+\item $\alpha + \beta = (a+bi)+(c+di)$ by definition of $\alpha$ and $\beta$\\
+$= (a+c)+(b+d)i$ by definition of addition of complex numbers\\
+$= (c+a)+(d+b)i$ by commutativity of addition for $\mathbb{R}$\\
+$= (c+di)+(a+bi)$ by definition of addition of complex numbers\\
+$= \beta + \alpha$ by definition of $\alpha$ and $\beta$
+\item $(\alpha+\beta)+\gamma = ((a+bi)+(c+di))+(e+fi)$ by definition of $\alpha$,$\beta$, and $\gamma$\\
+$= ((a+c)+(b+d)i)+(e+fi)$ by definition of addition of complex numbers\\
+$= ((a+c+e)+(b+d+f)i)$ by definition of addition of complex numbers\\
+$= (a+bi)+((c+e)+(d+f)i)$ by definition of addition of complex numbers\\
+$= (a+bi)+((c+di)+(e+fi))$ by definition of addition of complex numbers\\
+$= \alpha+(\beta + \gamma)$ by definition of $\alpha$,$\beta$, and $\gamma$
+\item $(\alpha\beta)\gamma = ((a+bi)(c+di))(e+fi)$ by definition of $\alpha$,$\beta$, and $\gamma$\\
+$= ((ac-bd)+(ad+bc)i)(e+fi)$ by definition of multiplication of complex numbers\\
+$= ((ac-bd)e-(ad+bc)f)+((ad+bc)e+(ac-bd)f)i$ by definition of multiplication of complex numbers\\
+$= (ace-bde-adf+bcf)+(ade+bce+acf-bdf)i$ by defintion of associativity of real numbers\\
+$= (a+bi)((ce-df)+(cf+de)i)$ by definition of multiplication of complex numbers\\
+$= (a+bi)((c+di)(e+fi))$ by definition of multiplication of complex numbers\\
+$= \alpha(\beta\gamma)$ by definition of $\alpha$,$\beta$, and $\gamma$
+\item for $\alpha = (a+bi)$ since for $a$,$b \in \mathbb{R}$ there exist unique additive inveses $(-a)$ and $(-b)$ define $\beta = ((-a)+(-b)i)$. Then $\alpha + \beta = (a+bi)+((-a)+(-b)i) = (a + (-a)) + (b + (-b))i = 0 + 0i$. 
+\item define $\beta$ as in problem 1.
+\item $\lambda(\alpha+\beta) = (h+ki)((a+bi)+(c+di))$ by definition of $\alpha$, $\beta$, and $\lambda$\\
+$= (h+ki)((a+c)+(b+d)i)$ by definition of addition of complex numbers\\
+$= (h(a+c)-k(b+d))+(h(b+d)+k(a+c))i$ by definition of multiplication of complex numbers\\
+$= (ha+hc-kb-kd) + (hb+hd + ka + kc)i$ by distributivity of real numbers\\
+$= (ha-kb)+(hb+ka)i+ (hc-kd)+(hd+kc)i$ by definition of addition of complex numbers\\
+$= (h+ki)(a+bi) + (h+ki)(c+di)$ by definition of multiplication of complex numbers\\
+$= \lambda\alpha +\lambda\beta$ by definition of $\alpha$, $\beta$, and $\lambda$
+\end{enumerate}
+\end{solution}
+
+I will not usualy do the proofs in such detail but it is important to see how to do proofs like this the first time around. 
+
+\begin{problem}
+Find $x \in \mathbb{R}^4$ such that $(4,-3,1,7)+2x = (5,9,-6,8)$.
+\end{problem}
+\begin{solution}
+Add the additive inverse of $(4,-3,1,7)$ to both sides of the equation. Then perform scalar multiplication by $1/2$. We find that $x = (1/2, 6, -7/2, 1/2)$. 
+\end{solution}
+
+\begin{problem}
+Explain why there does not exist $\lambda \in \mathbb{C}$ such that $\lambda(2-3i,5+4i,-6+7i) = (12-5i,7+22i,-32-9i)$.
+\end{problem}
+\begin{solution}
+By defintion $\lambda(2-3i,5+4i,-6+7i) = (\lambda(2-3i),\lambda(5+4i),\lambda(-6+7i))$. Suppose there was such a $\lambda$, then since a list is determined by it's components and their orders $\lambda(2-3i,5+4i,-6+7i) = (12-5i,7+22i,-32-9i)$ if and only if $\lambda(2-3i) = 12-5i$, $\lambda(5+4i) =7+22i$ and $\lambda(-6+7i) = -32-9i$.\\
+Let $\lambda = h+ki$. Then $\lambda(2-3i) = (h+ki)(2-3i) = (2h+3k)+(-3h+2k)i=12-5i$, $\lambda(5+4i)=(h+ki)(5+4i) = (5h-4k)+(4h+5k)i=7+22i$ and $\lambda(-6+7i) = (h+ki)(-6+7i)=(-6h-7k)+(7h-6k)i=-32-9i$.\\
+
+We also now have that $(2h+3k)+(-3h+2k)i=12-5i$ if and only if $2h+3k = 12$ and $-3h+2k = -5$. Similarly, $(5h-4k)+(4h+5k)i=7+22i$ if and only if $5h-4k = 7$ and $4h+5k=22$. Also  $(-6h-7k)+(7h-6k)i=-32-9i$ if and only if $(-6h-7k) = -32$ and $(7h-6k) = -9$. 
+
+Solving for $h$ from $2h+3k = 12$ one obtains $h = \frac{12-3k}{2}$. Plugging this result into $-3h+2k = -5$ we get that $-3h+2k = -3*\frac{12-3k}{2}+2k = (13/2)k-18 = -5$ means $k = 2$ and $h = 3$. Now still $5h-4k = 7$ and $4h+5k=22$ must hold as well as the third pair of relations $(-6h-7k) = -32$ and $(7h-6k) = -9$. Plugging in our values for $h$ and $k$ we get that $5(3)-4(2) = 7$ holds and $4(3)+5(2)=22$ hold. In the last relation, $(-6(3)-7(2)) = -32$ but $(7(3)-6(2)) =9 \neq -9$. Our possible solutions $h$ and $k$ do not satisfy all three relations. Later we will prove that this cannot be the case. In part, Linear Algebra is the study of systems of linear equations. 
+\end{solution}
+
+\begin{problem}
+Verify properties of $\mathbb{F}^n$: 
+Let $x,y,z\in\mathbb{F}^n$ be vectors and $a,b\in\mathbb{F}$ be scalars
+\begin{enumerate}
+\item show associativity of addition $(x+y)+z = x+(y+z)$
+\item show associativity of scalar multiplication $(ab)x = a(bx)$
+\item show there is a multiplicative identity $1x=x$ 
+\item show distributivity of scalar multiplication (vector side) $a(x+y) = ax + ay$
+\item show distributivity of scalar multiplication (scalar side)  $(a+b)x = ax + bx$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+\item $(x+y)+z = ((x_1, ..., x_n)+(y_1, ..., y_n))+(z_1,...,z_n)$ by definition of $x,y,z\in\mathbb{F}^n$\\
+$= (x_1+y_1,...,x_n+y_n)+(z_1,...,z_n)$ by definition of vector addition in $\mathbb{F}^n$\\
+$= ((x_1+y_1)+z_1,...,(x_n+y_n)+z_n)$ by definition of vector addition in $\mathbb{F}^n$\\
+$= (x_1+(y_1+z_1),...,x_n+(y_n+z_n))$ by definition of associativity in $\mathbb{F}$\\
+$= (x_1, ..., x_n)+(y_1+z_1,...,y_n+z_n)$ by definition of vector addition in $\mathbb{F}^n$\\
+$= (x_1, ..., x_n)+((y_1, ..., y_n)+(z_1,...,z_n))$ by definition of vector addition in $\mathbb{F}^n$\\
+$= x+(y+z)$ by definition of $x,y,z\in\mathbb{F}^n$
+\item This follows through a similar argument with the critical step being $(ab)x_i = a(bx_i)$ because multiplication in $\mathbb{F}$ is associative. 
+\item $1x =1(x_1,...,x_n) = (1x_1,...,1x_n) = (x_1,...,x_n) = x$. 
+\item $a(x+y) = a((x_1,..,x_n)+(y_1,...y_n)) = a(x_1+y_1,...,x_2+y_2) = (a(x_1+y_1),...,a(x_n+y_n)) = (ax_1+ay_1,...,ax_n+ay_n) = (ax_1,..,ax_n)+(ay_1,...ay_n) = a(x_1,..,x_n)+a(y_1,...y_n) = ax + ay$.
+\item The scalar side follows from a similar argument namely, the critical step again is distributivity in $\mathbb{F}$. Make sure you can justify every step in parts 2-5. 
+\end{enumerate}
+\end{solution}
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 3.A Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Wednesday October 24th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(\textbf{F}^n,\textbf{F}^m)$. Show that there exist scalars $A_{(j,k)} \in \textbf{F}$ for $j = 1,...,m$ and $k = 1,...,n$ such that $$T(x_1,..,x_n) = (A_{(1,1)}x_1+...+A_{(1,n)}x_n,...,A_{(m,1)}x_1+...+A_{(m,n)}x_n)$$ for every $(x_1,...,x_n) \in \textbf{F}^n$.
+\end{problem}
+
+\begin{solution}
+Keep track of which vectors are which in vectorspace, particularly the basis vectors. 
+
+Let $E = (1,0,0,...,0),(0,1,0,...,0),...,(0,0,...,1)$ be the usual basis (of length $n$) for $\textbf{F}^n$. Then for each vector in the basis we can apply $T$ and obtain a list of $n$ vectors $T(1,0,0,...,0)$, $T(0,1,0,...,0)$,...,$T(0,0,...,1)$ in $\textbf{F}^m$. Each of these vectors in $\textbf{F}^m$ can be expressed in terms of the standard basis for $\textbf{F}^m$ as follows: 
+$$T(1,0,0,...,0) = A_{(1,1)}(1,0,0,...,0)+A_{(2,1)}(0,1,0,...,0)+...+A_{(m,1)}(0,0,...,1)$$
+$$T(0,1,0,...,0) = A_{(1,2)}(1,0,0,...,0)+A_{(2,2)}(0,1,0,...,0)+...+A_{(m,2)}(0,0,...,1)$$
+$$T(0,0,1,...,0) = A_{(1,3)}(1,0,0,...,0)+A_{(2,3)}(0,1,0,...,0)+...+A_{(m,3)}(0,0,...,1)$$
+and so on 
+$$T(0,0,0,...,1) = A_{(1,n)}(1,0,0,...,0)+A_{(2,n)}(0,1,0,...,0)+...+A_{(m,n)}(0,0,...,1)$$
+
+Note: in each of the sums above, there are exactly $m$ summands. 
+
+Expressing $(x_1,...,x_n)$ in terms of the basis for $\textbf{F}^n$, $$(x_1,...,x_n) = x_1(1,0,0,...,0)+x_2(0,1,0,...,0)+...+x_n(0,0,...,1)$$ and applying the linear transformation $T$ we obtain a vector in $\textbf{F}^m$: \begin{align*}T(x_1,...,x_n) = x_1T(1,0,0,...,0)+\\x_2T(0,1,0,...,0)+\\...\\+x_nT(0,0,...,1)\end{align*} 
+representing the image of each basis vector under $T$ as a linear combination of the basis for $\textbf{F}^m$ as above, we obtain the rather large sum: 
+
+\begin{align*}T(x_1,...,x_n) = x_1(A_{(1,1)}(1,0,0,...,0)+A_{(2,1)}(0,1,0,...,0)+...+A_{(m,1)}(0,0,...,1)) +\\ x_2(A_{(1,2)}(1,0,0,...,0)+A_{(2,2)}(0,1,0,...,0)+...+A_{(m,2)}(0,0,...,1))+ \\ ...\\+x_n(A_{(1,n)}(1,0,0,...,0)+A_{(2,n)}(0,1,0,...,0)+...+A_{(m,n)}(0,0,...,1))\end{align*}
+
+Gathering like terms it is easy to see that this is exactly the form desired in the statement of the problem. 
+\end{solution}
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(V,W)$ and $v_1,...,v_m$ is a list of vectors in $V$ such that $Tv_1,...,Tv_m$ is a linearly independent list in $W$. Prove that $v_1,...,v_m$ is linearly independent.
+\end{problem}
+
+\begin{solution}
+Let $a_1,...,a_m$ be scalars such that $a_1v_1+...+a_mv_m = 0$. We need to show that $a_1=...=a_m=0$. Apply $T$, $$T(a_1v_1+...+a_mv_m) = T(0) = 0$$ but by linearity $$a_1Tv_1+...+a_mTv_m = 0$$ since $Tv_1,...,Tv_m$ is a linearly independent list in $W$ then $a_1=...=a_m=0$. 
+\end{solution}
+
+\begin{problem}
+Show that every linear map from a 1-dimensional space to itself is multiplication by some scalar. Prove that if $dim V = 1$ and $T \in \mathscr{L}(V)$, then there exists $\lambda \in \mathscr{F}$ such that $Tv = \lambda v$ for all $v \in V$. 
+\end{problem}
+
+\begin{solution}
+Since $dim V = 1$, the length of any basis is $1$. Pick a basis for $V$, it consists of a list of a single non-zero vector. Call this vector $u$. Pick any non-zero vector $v \in V$. Then $v$ can be expressed as a linear combination of the basis, $v = cu$ for $c \neq 0 \in \textbf{F}$. Applying $T$ to $u$ we obtain a vector $Tu$ in $V$. $Tu$ can be expressed in terms of a basis for $V$ as $Tu = \lambda u$ for some $\lambda \in \textbf{F}$. Multiplying both sides by $c$ we obtain $cTu = c \lambda u$, consequently using the linearity of $T$, $Tcu = \lambda cu$, substituting in the equation $v = cu$, we obtain the result $Tv = \lambda v$.      
+\end{solution}
+
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Notes Quotients of Sets
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+October 29th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+The prerequisite for these notes is reading the first two pages of section 3E. 
+
+\subsection*{Notation}
+
+The goal of these notes is to motivate the definition of a quotient of a vector space by a subspace. So far we have only defined an addition and a scalar multiplication on vectors. We will not attempt to divide one vector by another. It make make things easier to have the review of cartesian product from the notes from October 17th in front of you. Those notes are on blackboard.\\
+
+As usual, our intuition will come from the natural numbers by which we mean the non-negative integers, so we include $0$. However, we will need to translate the natural numbers $0$, $1$, $2$, and so on, into sets. \\ 
+
+The logic goes like this: We can divide natural numbers. If we view numbers as sets, then we should be able to divide certain sets. If vectorspaces are sets ``like'' the sets we can divide with some additional operations, and we can figure out how make division of sets compatible with these operations, then we should have a notion of division for vectorspaces. 
+
+\begin{definition}
+For any natural number $n$, let $\textbf{n}$ denote the set $\{1,2,...,n\}$. That is, $\textbf{n} = \{1,2,...,n\}$. 
+\end{definition}
+
+\begin{definition}
+Let $A$ and $B$ be sets.  We say $A$ and $B$ are isomorphic if there exists an injective and surjective function from $A$ to $B$. The statement $A$ and $B$ are isomorphic can be written $A \cong B$. 
+\end{definition}
+
+Note that the definition of isomorphicity for sets is exactly the same as that for vector spaces except the function that provides the isomorphism is not required to be a linear map. 
+
+\begin{theorem}
+If $n$, $m$, and $k$ are natural numbers such that $nm = k$, then the cartesian product $\textbf{n} \times \textbf{m} \cong \textbf{k}$. 
+\end{theorem}
+
+This is offered without proof. Instead the following example is given.
+
+\begin{example}
+Since $(2)(3) = 6$, 
+$$\textbf{2} \times \textbf{3} = 
+\left\{ \begin{array}{lll}
+         (1,1) & (1,2) & (1,3)\\
+         (2,1) & (2,2) & (2,3)\end{array} \right \} \text{ and } \textbf{6} = \{1,2,3,4,5,6\}$$ define a function $f$ from $\textbf{2} \times \textbf{3}$ to $\textbf{6}$ $$f:\textbf{2} \times \textbf{3} \rightarrow \textbf{6}$$ explicitly by $f(1,1) = 1$, $f(1,2) = 2$, $f(1,3) = 3$, $f(2,1) = 4$, $f(2,2) = 5$, and $f(2,3) = 6$.  By inspecting $f$ it should be clear that $f$ is a function, $f$ is injective, and $f$ is surjective. \\
+         
+Because $f$ is an injective and surjective function, there is an function $$g:\textbf{6} \rightarrow \textbf{2} \times \textbf{3}$$ given by $g = f^{-1}$. 
+\end{example}
+
+Note that I chose not to write $f(1,1)$ instead of $f((1,1))$ just to get rid of some parentheses.
+
+\begin{exercise}
+Prove that for sets $A$ and $B$, $A \times B \cong B \times A$.
+\end{exercise}
+
+\subsection*{Quotients of Sets}
+
+We now will begin defining the quotient of two sets. Recall that the analogue of multiplying two natural numbers is taking the cartesian product of two sets. We must first define quotients of sets and then show that they are the correct analogue for division of natural numbers. 
+
+
+\begin{definition}
+For natural numbers $n$,$m$, and $k$ such that $nm=k$ and therefore $\textbf{n} \times \textbf{m} \cong \textbf{k}$,  define the quotient of $\textbf{k}$ by $\textbf{m}$, denoted $\textbf{k/m}$ to be the set $\{(1,\textbf{m}),(2,\textbf{m}),...,(n,\textbf{m})\}$.  As one can see $\textbf{k/m}$ consists of $n$ elements, each element being a pair consisting of an element of $\textbf{n}$ in the first coordiante and the entire set $\textbf{m}$ in the second coordinate. 
+\end{definition}
+
+\begin{example}
+Continuing with the result from example 1, 
+$$\textbf{2} \times \textbf{3} = 
+\left\{ \begin{array}{lll}
+         (1,1) & (1,2) & (1,3)\\
+         (2,1) & (2,2) & (2,3)\end{array} \right \} \cong \{1,2,3,4,5,6\} = \textbf{6}.$$ We form the quotient of $\textbf{6}$ and $\textbf{3}$ which is $$\textbf{6/3} = \{(1,\textbf{3}),(2,\textbf{3})\}.$$ 
+\end{example}
+
+\begin{exercise}
+Use the result of exercise 1 to write $\textbf{6/2}$.
+\end{exercise}
+
+\begin{definition}
+Let $\textbf{k/m}$ be a quotient of $\textbf{k}$ as in definition 3. Define a function called the projection $p:\textbf{n}\times\textbf{m} \rightarrow \textbf{k/m}$ as follows: let $(i,j) \in \textbf{n} \times \textbf{m}$ then $$p(i,j) = (i,\textbf{m})$$ in $\textbf{k/m}$. Note that $i \in \textbf{n}$ and $j \in \textbf{m}$. 
+\end{definition}
+
+\begin{example}
+In the context of the running example, $p:\textbf{2}\times\textbf{3} \rightarrow \textbf{6/3}$ $$p:\left\{ \begin{array}{lll}
+         (1,1) & (1,2) & (1,3)\\
+         (2,1) & (2,2) & (2,3)\end{array} \right \} \rightarrow \left\{ \begin{array}{lll}
+         (1,\textbf{3}) & (1,\textbf{3}) & (1,\textbf{3})\\
+         (2,\textbf{3}) & (2,\textbf{3}) & (2,\textbf{3})\end{array} \right \} = \left\{ \begin{array}{l}
+         (1,\textbf{3}) \\
+         (2,\textbf{3}) \end{array} \right \} $$ where, for instance  $p(1,2) = (1,\textbf{3})$  and $p(2,3) = (2,\textbf{3})$. Note that there are no repeated elements in sets although there can be for lists. This gives the equality of the sets representing $\textbf{6/3}$ above. 
+\end{example}
+
+Note that  $(1,1)$, $(1,2)$, and $(1,3)$ are all sent to a single element of $\textbf{6/3}$, $(1,\textbf{3})$. Also $(2,1)$, $(2,2)$, and $(2,3)$ are all sent to $(2,\textbf{3})$. There are $2$ ``copies" of $\textbf{3}$ inside of $\textbf{2} \times \textbf{3}$, each one is crushed down to a single element. This is the reason why division works for the natural numbers. This is an important example because it should display the way we have adapted division to be an operation of sets.\\
+
+The set $\textbf{3}$ acts like a curtain, obscuring the second element of each pair in the cartesian product. With the differences between $(1,2)$ and $(1,3)$ obscured, they become the same element $$p(1,2) = (1, \textbf{3}) = (1, \textbf{3}) = p(1,3)$$ in the quotient $\textbf{6/3}$. 
+
+\begin{exercise}
+Suppose there are natural numbers $n$, $m$, and $k$, such that $nm = k$.  Prove $p$ is surjection from $\textbf{n}\times\textbf{m}$ onto the quotient $\textbf{k/m}$. 
+\end{exercise}
+
+\begin{theorem}
+Suppose there are natural numbers $n$, $m$, and $k$, such that $nm = k$. The quotient $\textbf{k/m}$ is isomorphic to $\textbf{n}$. 
+\end{theorem}
+
+\begin{exercise}
+Prove the theorem 2.
+\end{exercise}
+
+\begin{definition}
+Let $\textbf{k/m}$ be a quotient of $\textbf{k}$ as in definition 3. Let $g:\textbf{k} \rightarrow \textbf{n}\times \textbf{m}$ be the inverse of the isomorphism guarateed by theorem 1. The quotient function, denoted, $\pi$, is defined to be the map which takes any $x \in \textbf{k}$, first by $g$ to an element  $g(x) = (i,j) \in \textbf{n}\times\textbf{m}$ then down $p$ to the element $p(g(x)) \in \textbf{k/m}$.
+
+\begin{center}
+\begin{tikzcd}
+\textbf{k} \arrow[r, "g"] \arrow[dr,"\pi"'] & \textbf{n}\times\textbf{m} \arrow[d, "p"] \\ 
+ &  \textbf{k/m} 
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+\end{document}

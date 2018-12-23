@@ -1,0 +1,95 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 1.B Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Tuesday August 21th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Prove that $-(-v) = v$ for every $v \in V$ 
+\end{problem}
+
+\begin{solution}
+By the definition, it is clear that $-(-v)$ is the additive inverse for $(-v)$, $-(-v) + (-v) = 0$, however, $v + (-v) = 0$ so $v$ is also an additive inverse for $(-v)$. Thus by the uniqueness of additive inverses $\textbf{1.26}$ the result holds.
+\end{solution}
+
+\begin{problem}
+Suppose $a \in \mathbb{F}$, $v \in V$ and $av = 0$. Prove that $a = 0$ or $v = 0$. 
+\end{problem}
+
+\begin{solution}
+Suppose $v \neq 0 \in V$, and suppose that $a \neq 0$. Then there exists a multiplicative inverse for $a$, $a^{-1}$ such that $a^{-1}a = 1$. Then $a^{-1}(av) = (a^{-1}a)v = 1v = v$ Thus $v = a^{-1}(av) = a^{-1}(0) = 0$ where the last equality holds because a number times the $0$ vector is $0$. This is a contradiction. Therefore $a = 0$.\\
+Suppose $a \neq 0 in \mathbb{F}$, then there exists a multiplicative inverse for $a$, $a^{-1}$ such that $a^{-1}a = 1$. Then $a^{-1}(av) = (a^{-1}a)v = 1v = v$. Thus $v = a^{-1}(av) = a^{-1}(0) = 0$ where the last equality holds because a number times the $0$ vector is $0$. Thus $v = 0$ 
+\end{solution}
+
+\begin{problem}
+Suppose $v,w \in V$. Explain why there exists a unique $x \in V$ such that $v + 3x = w$.
+\end{problem}
+\begin{solution}
+There exists a unique additive identity for $v$, $(-v)$. Let $x = (1/3)(w+(-v))$ then $v + (3)(1/3)(w+(-v)) = v + w -v = w$.
+\end{solution}
+
+\begin{problem}
+The empty set is not a vectorspace. The empty set fails to satisfy only one of the requirements listed in 1.19. Which one?
+\end{problem}
+\begin{solution}
+The empty set does not have an additive identity. 
+\end{solution}
+\begin{problem}
+Show that in the definition of a vectorspace (1.19), the additive inverse condition can be replaced with the condition that $0v = 0$ for all $v \in V$. Here $0$ on the left side is the number $0$, and the $0$ on the right side is the additive identity of $V$. 
+\end{problem}
+
+\begin{solution}
+Let $0 = 0v = (1-1)v = 1v + (-1)v = v+(-1)v$. Therefore, $(-1)v$ is an additive inverse for $v$. 
+\end{solution}
+
+\begin{problem}
+Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in $\mathbb{R}$. Define an addition and scalar multiplication on $\mathbb{R}\cup \{\infty\}\cup \{-\infty\}$ as you could guess from the notation. Specifically, the sum and product of two real numbers is as usual, and for $t \in \mathbb{R}$ define $t\infty
+ = -\infty$ if $t < 0$, $t\infty = 0$ if $t = 0$ and $t\infty = \infty$ for $t>0$. Also $t+\infty = \infty +t =  \infty$, $t+(-\infty) = (-\infty) +t =-\infty$. $\infty+\infty =\infty$, $(-\infty)+(-\infty) =(-\infty)$, $0 = (-\infty)+\infty$.\\
+Is $\mathbb{R}\cup \{\infty\}\cup \{-\infty\}$ a vectorspace over $\mathbb{R}$? Explain.
+ \end{problem}
+ \begin{solution}
+ note that for any $t \in \mathbb{R}$, and any $s \in \mathbb{R}\cup \{\infty\}\cup \{-\infty\}$,   $t + s = (t+0) + s = (t + (-\infty + \infty)) + s =  ((t + -\infty) + \infty) + s = (-\infty + \infty) + s = 0 + s = s$. Thus $t$ is an additive identity for $\mathbb{R}\cup \{\infty\}\cup \{-\infty\}$. Therefore, since $t \neq 0$ we fail to have uniqueness of additive identities. Thus $\mathbb{R}\cup \{\infty\}\cup \{-\infty\}$ cannot be a vectorspace. You can follow this back further. What other properties does it not satisfy?
+ \end{solution}
+\end{document}

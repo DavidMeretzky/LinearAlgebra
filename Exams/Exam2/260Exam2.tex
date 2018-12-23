@@ -1,0 +1,233 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 2
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Monday November 19th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+In problems $1$ and $2$ your wording may be different than that of book. I am looking for correctness in the concepts. Problems $1-3$ are worth $70$ points.  The test is out of $100$. 
+
+\begin{problem}
+Give definitions for the following terms: (Careful, pay attention to the vector spaces involved, write them explicitly). 
+\begin{enumerate}
+\item linear map
+\item addition and product of linear maps.    
+\item null space/kernel of a linear map, prove it is a subspace
+\item range of a linear map, prove it is a subspace
+\item injectivity of a function
+\item surjectivity of a function
+\item invertability of a linear map, isomorphism
+\item operator
+\item define a linear map $[ \ \ ]_B:V \rightarrow \textbf{F}^n$ 
+\item define a linear map $[ \ \ ]_{B'}^B:\mathscr{L}(V,W) \rightarrow \textbf{F}^{m\times n}$\\\\
+Definitions from 10/17 notes: For a vector $v \in V$ and a pair of linear transformations $T:V \rightarrow W$ and $S:W\rightarrow U$\\
+\item define $[T]_{B'}^B[v]_B$. How should we denote (write down a symbol for) it?
+\item define $[S]_{B''}^{B'}[T]_{B'}^B$. How should we denote (write down a symbol for) it?
+Hint: it may be easier to figure out first how to denote (write down a symbol for) $[T]_{B'}^B[v]_B$ and $[S]_{B''}^{B'}[T]_{B'}^B$ then figure out how you should define it. 
+\end{enumerate}
+\end{problem}
+
+% \begin{solution}
+% See the text for Definitions 1-8. For definitions 9 and 10 see theorem 1 and 2 of the 10/17 notes. For the defintion of $[T]_{B'}^B[v]_B$ see equation (20) of the 10/17 notes. Most of the 10/17 notes are devoted to showing that we can denote $[T]_{B'}^B[v]_B$ by $[Tv]_{B'}$.\\
+% 
+% The definition of $[S]_{B''}^{B'}[T]_{B'}^B$ is given as follows: $[T]_{B'}^B$ is the matrix who's $i^{th}$ column is given as $[Tv_i]_{B'}$ where the $v_i \in B$. Define  $[S]_{B''}^{B'}[T]_{B'}^B$ to be the matrix who's $i^{th}$ column is given by $[S]_{B''}^{B'}[Tv_i]_{B'}$ (This expression is defined in equation 20 of the 10/17 notes). That is send each column of $[T]_{B'}^B$ through $[S]_{B''}^{B'}$ one at a time. We can denote $[S]_{B''}^{B'}[T]_{B'}^B$ as $[S\circ T]_{B''}^{B}$.  
+% \end{solution}
+
+Prove the following (what I call the fundamental theorem of linear maps): 
+
+\begin{problem}[3.5]
+Suppose $v_1,...,v_n$ is a basis of $V$ and $w_1, ..., w_n \in W$. Then there exists a unique linear map $T:V \rightarrow W$ such that $$Tv_j = w_j$$ for each $j = 1,...,n$
+\end{problem}
+
+% \begin{solution}
+% See the text. 
+% \end{solution}
+
+\begin{problem}
+State and prove (Axler's) Fundamental Theorem of Linear Maps. 
+\end{problem}
+
+% \begin{solution}
+% See the text. 
+% \end{solution}
+
+Do problems 4-9 to obtain the remaining $30$ points:
+
+\begin{problem}
+(5 points) Let $E_n$ be the standard basis for $\textbf{R}^n$. Suppose $T$ is a linear map from $\textbf{R}^3 \rightarrow \textbf{R}^2$ and 
+$$[T]^{E_3}_{E_2} = \begin{pmatrix} 1 & 2 & 3  \\
+ 4 & 5& 6   \\
+\end{pmatrix}$$
+
+Write $T$ as a linear map. What vector spaces are the kernel and range of $T$ subspaces of?  Find a basis of the kernel. Find a basis of the range.  What are the dimensions of these spaces? 
+\end{problem}
+
+% \begin{solution}
+% The image of the first basis vector $e_1$ of $E_3$ is $1e_1+4e_2$ in $\textbf{R}^2$. Thus we may write $T(1,0,0) = (1,4)$. Using the other two columns of the matrix we see that $T(0,1,0) = (2,5)$ and $T(0,0,1) = (3,6)$. Using the linearity of $T$ we can write $T(a,b,c)=aT(1,0,0)+bT(0,1,0)+cT(0,0,1) = a(1,4)+b(2,5)+c(3,6) = (a+2b+3c,4a+5b+6c)$. The kernel of $T$ is a subspace of the domain (input space) which is $\textbf{R}^3$. The range of $T$ is a subspace of the codomain (target or output space) which is $\textbf{R}^2$.  The kernel is the set $$\{(a,b,c) \in \textbf{R}^3|T(a,b,c) = (0,0)\} = $$ $$\{(a,b,c) \in \textbf{R}^3|(a+2b+3c,4a+5b+6c) = (0,0)\}$$ If $(a,b,c)$ is in the kernel, we must have $a+2b+3c = 0$ and that $4a+5b+6c = 0$.\\
+% 
+% The first equation yeilds $3c = -a-2b$. Plugging this into the second equation we obtain $4a + 5b -2a -4b = 0$. Thus $2a+b = 0$. So $-2a = b$ and $3c = -a-2(-2a) = -a+4a = 3a$. So $a = c$. Thus $$\{(a,b,c) \in \textbf{R}^3|T(a,b,c) = (0,0)\} =\{(a,b,c) \in \textbf{R}^3|a = c = -b/2 )\} = \{(a,-2a,a) \in \textbf{R}^3\}$$. This space has dimension 1. It has a single basis vector $(1,-2,1)$. By the fundamental theorem of Linear Maps (Axler) we have $dim(\textbf{R}^3) = dim(Ker \ T) + dim(Ran \ T)$ from which we may conclude that $dim(Ran \ T) = 2$ because the equation has the form $3 = 1 + 2$. Since $\textbf{R}^2$ has dimension $2$ we conclude that $Ran \ T$ is all of $\textbf{R}^2$. A basis for $Ran \ T$ is just $E_2$.  
+% \end{solution}
+
+
+\begin{problem}
+(5 points) Let $T:\textbf{R}^5 \rightarrow \textbf{R}^3$ be a linear transformation whose kernel is of dimension $3$. What is the dimension of the range? What does the set of points in the range look like geometrically? Hint: there are only $4$ possible things that it could look like.  
+\end{problem}
+
+% \begin{solution}
+% By the fundamental theorem of Linear Maps (Axler) we have $dim(\textbf{R}^3) = dim(Ker \ T) + dim(Ran \ T)$ from which we may conclude that $dim(Ran \ T) = 2$ because the equation has the form $5 = 3 + 2$. The Range is a two dimensional subspace of $\textbf{R}^3$. Geometrically the range looks like a plane through the origin. 
+% \end{solution}
+
+\begin{problem}
+(5 points) Show that every linear map from a 1-dimensional space to itself is multiplication by some scalar. More precisely, prove that if $dim V = 1$ and $T \in \mathscr{L}(V,V)$, then there exists $\lambda \in \textbf{F}$ such that $Tv = \lambda v$ for all $v \in V$. 
+\end{problem}
+
+% \begin{solution}
+% See homework answers to $3A$, specifically problem 7. 
+% \end{solution}
+
+\begin{problem}
+(5 points) Let $T:\textbf{R}^3 \rightarrow \textbf{R}^3$ by $T(x,y,z) = (x+y+z,0,0)$ find a basis for the kernel of T. What is the dimension of the range? What is the dimension of the kernel?
+\end{problem}
+
+% \begin{solution}
+% The kernel of $T$ is given by the set $$\{(x,y,z) \in \textbf{R}^3|T(x,y,z) = (x+y+z,0,0) = (0,0,0)\}$$ If $(x,y,z)$ is in the kernel, we must have $x + y + z = 0$. So $z = -x-y$. Thus $$Ker T = \{(x,y,-x-y) \in \textbf{R}^3\} = \{(x,0,-x)+(0,y,-y)|x,y \in \textbf{R}\}$$. This is a two dimensional space with basis $(1,0,-1)$ and $(0,1,-1)$ (see test 1 solutions for a direct proof).  Clearly, $dim(Ran \  T) = 1$ since only the $e_1$ coordinate is ever non-zero in $(x+y+z,0,0)$.  We can check using the fundamental theorem of Linear Maps (Axler), $dim(\textbf{R}^3) = dim(Ker \ T) + dim(Ran \ T)$ that $dim(Ran \ T) = 1$ and $dim( Ker\ T) = 2$ checks out because the equation has the form $3 = 2 + 1$. 
+% \end{solution}
+
+\begin{problem}
+(5 points)Let $T:\textbf{R}^3 \rightarrow \textbf{R}^3$. Suppose 
+$$[T]^{B}_{B'} = 
+\begin{pmatrix} a & b & c  \\
+ d & e& f   \\
+  g & h& i   \\
+\end{pmatrix}$$ 
+where $B = v_1,v_2,v_3$ and $B' = w_1,w_2,w_3$ are both bases for $\textbf{R}^3$. Apply the base change formula to obtain $$[T]^{C}_{C'} = 
+\begin{pmatrix} 
+ d & e & f   \\
+ g & h & i   \\
+ a & b & c  \\
+\end{pmatrix}$$ 
+Write the base change matricies out. Begin by figuring out out what $C$ and $C'$ are. 
+\end{problem}
+
+% \begin{solution}
+% The base change formula is $[I]^{B'}_{C'}[T]^{B}_{B'}[I]^{C}_{B} = [T]^{C}_{C'}$.\\
+% 
+% The columns of the matrix $[T]^{B}_{B'}$ tell us that $Tv_1 = aw_1+dw_2+gw_3$, $Tv_2 = bw_1+ew_2+hw_3$, and $Tv_3 = cw_1+fw_2+iw_3$.  Notice that the rows of $[T]^{C}_{C'}$ are just reorderings of the rows of $[T]^{B}_{B'}$. So if $B' = w_2,w_3,w_1$ instead of  $B' = w_1,w_2,w_3$ the matrix $[T]^{B}_{B'}$ would have the form $$\begin{pmatrix} 
+%  d & e & f   \\
+%  g & h & i   \\
+%  a & b & c  \\
+% \end{pmatrix}$$
+% This is what change of basis is for. Multiplying $[T]^{B}_{B'}$ on the left by the matrix $[I]^{B'}_{C'}$ will change the basis $B'$ into $C'$. Choose $C' = w_2,w_3,w_1$. Once this is done we dont need to even change the basis $B$. Let $C = B$.\\
+% 
+% Check yourself $$[I]^{B'}_{C'} = 
+% \begin{pmatrix} 
+%  0 & 1 & 0   \\
+%  0 & 0 & 1   \\
+%  1 & 0 & 0  \\
+% \end{pmatrix}$$ and 
+% $$[I]^{C}_{B} = 
+% \begin{pmatrix} 
+%  1 & 0 & 0   \\
+%  0 & 1 & 0   \\
+%  0 & 0 & 1  \\
+% \end{pmatrix}$$
+% 
+% Furthermore, check that the change of basis formula works. 
+% $$\begin{pmatrix} 
+%  0 & 1 & 0   \\
+%  0 & 0 & 1   \\
+%  1 & 0 & 0  \\
+% \end{pmatrix}
+% \begin{pmatrix}
+% a & b & c  \\
+%  d & e& f   \\
+%   g & h& i   \\
+% \end{pmatrix}
+% \begin{pmatrix} 
+%  1 & 0 & 0   \\
+%  0 & 1 & 0   \\
+%  0 & 0 & 1  \\
+% \end{pmatrix}
+%  = 
+%  \begin{pmatrix} 
+%  d & e & f   \\
+%  g & h & i   \\
+%  a & b & c  \\
+% \end{pmatrix} $$
+% \end{solution}
+
+\begin{problem}
+(5 points) Use Problem 2, that is, apply Theorem (3.5) to show that if two finite dimensional vector spaces $V$ and $W$ have the same dimension, then they must be isomorphic. 
+\end{problem}
+
+% \begin{solution}
+% See the second half of 3.59 of the text in section 3D. 
+% \end{solution}
+
+\begin{problem}[Bonus 5 points]
+Suppose $V$ and $W$ are of dimension $n$ and $m$ respectively, pick a vector $v\in V$. Define $$E_v = \{T \in \mathscr{L}(V,W)|Tv = 0\}$$ that is, $E_v$ is the set of linear transformations which send $v$ to $0 \in W$. Show that $E_v$ is a subspace of $\mathscr{L}(V,W)$. Suppose $v \neq 0$ what is the dimension of $E_v$? 
+\end{problem}
+
+% \begin{solution}
+% It is very straightforward to show that $E_v$ is a subspace of $\mathscr{L}(V,W)$. Finding the dimension of $E_v$ requires more thought. I will sketch two ways of discovering this.\\ 
+% 
+% Sketch solution 1:\\
+% 
+% Find a linear map $\phi_v:\mathscr{L}(V,W) \rightarrow W$ who's kernel is exactly $E_v$. Then apply the Fundamental Theorem of Linear Maps (Axler).\\ 
+% 
+% Sketch solution 2:\\
+% 
+% This is a longer proof which does not use the fundamental theorem of linear maps.\\ 
+% 
+% Let $B$ be a basis of $V$ which contains $v$. Let $B'$ be a basis of $W$. Define a basis $C$ of $\mathscr{L}(V,W)$ to be the $n \times m$ linear maps $L_{(i,j)}$ which take the $i^{th}$ vector of $B$ to the $j^{th}$ vector of $B'$, and take all other vectors of $B$ to $0$, for $i \in 1,...,n$ and $j \in 1,...,m$. It is easy to show this is a basis.\\ 
+% 
+% Then show that the basis vectors (linear maps) in $C$ which take $v$ to $0$ form a basis of $E_v$. This is not hard. Just show that their span contains $E_v$ and that $E_v$ contains their span. Then count how many basis vectors (linear maps) in $C$ take $v$ to $0$? This is the dimension of $E_v$.  
+% 
+% \end{solution}
+
+\end{document}

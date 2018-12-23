@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}%\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{example}{Example}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exam 3 Take Home
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Friday Decmeber 7th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Problems 1-5 are worth 18 points each. Problem 6 is worth 10 points. The test is out of 100 points. 
+
+\begin{definition}
+Let $V$ be a real or complex vectorspace, $\textbf{F} = \textbf{R}$ or $\textbf{C}$. A norm on $V$ is a real-valued function $||\ \  ||:V \rightarrow \textbf{R}$ such that 
+\begin{enumerate}
+\item for any non-zero vector $v \in V$, $||v|| > 0$, 
+\item for any scalar $\alpha \in \textbf{F}$, $||\alpha v|| = |\alpha|||v||$ for all $v \in V$,
+\item for any $u,v \in V$ $||u+v|| \leq ||u|| + ||v||$
+\end{enumerate}
+We call $V$ a normed linear space. 
+\end{definition}
+
+
+\flushleft
+Let $B = e_1,...,e_n$ be the usual basis for $\textbf{F}^n$. For instance, we know that $\textbf{R}^n$ has the usual euclidean norm: for $v \in  \textbf{F}^n$, $v = a_1e_1 +...+a_ne_n$, define 
+\begin{equation}||v|| = (\sum_{i = 1}^na_i^2)^{\frac{1}{2}}\end{equation}
+
+\begin{example}
+$$||(1,-1)|| = \sqrt{1^2+(-1)^2}$$
+\end{example}
+
+Clearly $\textbf{F}^n$ is a normed linear space. You will show that if $V$ is finite dimensional then $\mathscr{L}(V)$ is a normed linear space. 
+
+\begin{definition}
+Let $V$ be a finite dimensional normed linear space and let  $T \in \mathscr{L}(V)$. Define the operator norm of $T$ to be the smallest number $M$ such that $||Tv|| \leq M||v||$ for any $v \in V$. We will write $||T||$ to mean that smallest number $M$, the operator norm. 
+\end{definition}
+
+\flushleft
+Notice that the norms in the expression $||Tv|| \leq M||v||$ are the norm that $V$ was born with. That is, this definition only makes sense if $V$ has a norm. 
+
+\begin{problem}
+Let $B = e_1,...,e_n$ be an orthonormal basis for $V$ a normed linear space of dimension $n$. Let $T \in \mathscr{L}(V)$. Let $m = Max\{||Te_1||,||Te_2||,...,||Te_n||\}$. That is, $m$ is the length of the longest vector in the list $Te_1,...,Te_n$. Prove that for any vector $v \in V$, $||Tv|| \leq mn$. 
+\end{problem}
+
+\begin{problem}
+Let $B = e_1,...,e_n$ be an orthonormal basis for $V$ a normed linear space of dimension $n$. Let $T \in \mathscr{L}(V)$. Show that the operator norm of $T$ exists and is finite. (I am asking you to show that taking any $v \in V$, show that there exists a number $K$ such that $||Tv|| \leq $K$||v||$.) Hint: Use the conclusion of the previous problem. Hint: maybe the problem is easier if you assume $||v|| = 1$? 
+\end{problem}
+
+Now that we know the operator norm exists and is finite:
+
+\begin{problem}
+Show that the operator norm is a norm (satisfies definition 1) on $\mathscr{L}(V)$ for a finite dimensional normed linear space $V$.  
+\end{problem}
+
+What does the operator norm have to do with the largest eigenvalue?\\
+\vspace{3mm}
+Let $T$ be an invertable linear operator of a finite dimensional normed linear space $V$. 
+
+\begin{problem}
+Let $v$ be an eigenvector for $T$ with eigenvalue $\lambda$. Prove that $||Tv|| = |\lambda|||v||$. Prove that $|\lambda| \leq ||T||$. 
+\end{problem}
+
+\begin{problem}
+Suppose $T \in \mathscr{L}(V)$ is invertible. Suppose $\lambda \in \textbf{F}$ with $\lambda\neq 0$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$. 
+\end{problem}
+
+\begin{problem}
+Let $V$ be a normed linear finite dimensional inner product space over $\textbf{R}$. What can you say about the relationship between the norm on $V$ and the operator norm on $\mathscr{L}(V,\textbf{R})$? Define the operator norm on $\mathscr{L}(V,\textbf{R})$ by letting $||\phi||$ for $\phi \in \mathscr{L}(V,\textbf{R})$ be the smallest number $M$ such that $|\phi(v)| \leq M||v||$ for all $v\in V$.\\ 
+
+Hint: The Reisz Representation Theorem gives a nice association: for every $\phi \in \mathscr{L}(V,\textbf{R})$ there exists a unique $v \in V$ such that $< \ \  ,v>$ is equal to $\phi( \ \ )$.  
+\end{problem}
+
+\end{document}

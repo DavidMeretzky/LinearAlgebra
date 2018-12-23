@@ -1,0 +1,153 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{solution}{Solution}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+Math 260 Exercises 1.C Solutions
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+Wednesday September 12th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+For each of the following subsets of $\mathbb{F}^3$, determine whether it is a sub-space for $\mathbb{F}^3$
+\begin{enumerate}
+\item $\{(x_1,x_2,x_3) \in \mathbb{F}^3 |x_1 + 2x_2 + 3x_3 = 0 \}$
+\item $\{(x_1,x_2,x_3) \in \mathbb{F}^3 |x_1 + 2x_2 + 3x_3 = 4 \}$
+\item $\{(x_1,x_2,x_3) \in \mathbb{F}^3 |x_1x_2x_3 = 0 \}$
+\item $\{(x_1,x_2,x_3) \in \mathbb{F}^3 |x_1  = 5x_3 \}$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+\item Yes, as you should check. 
+\item No, as you should check. 
+\item No, notice that $(1,0,1)$ and $(0,1,0)$ are in this set but their sum is not: $(1,0,1) + (0,1,0) = (1,1,1)$. 
+\item Yes, as you should check. 
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Show that the set of differentiable real-valued functions $f$ on the interval $(-4,4)$ such that $f'(-1) = 3f(2)$ is a subspace of $\mathbb{R}^{(-4,4)}$.
+\end{problem}
+\begin{solution}
+See class notes on example $1.35$ part $d$. For $f$ and $g$ satisfying the differential equations $f'(-1) = 3f(2)$ and $g'(-1) = 3g(2)$, the linearity of the derivative says that $f'(-1) + g'(-1) = (f+g)'(-1)$. Similarly, $3f(2)+3g(2) = 3(g+f)(2)$ therefore $f+g$ satisfies the differential equation and therefore is in the subspace. Show that this set satisfies the $2$ remaining conditions.
+\end{solution}
+
+\begin{problem}
+Is $\mathbb{R}^2$ a subspace of the complex vectorspace $\mathbb{C}^2$?
+\end{problem}
+
+\begin{solution}
+No. We shall have more to say on this later. For now, take note of a few things. As we said in class, $\mathbb{R}^2$ strictly speaking is not a subspace of $\mathbb{R}^3$. Think about their definitions. The subspace $W$ of $\mathbb{R}^3$ which has vectors of the form $(x_1,x_2,0)$ where $x_1$ and $x_2$ are in $\mathbb{R}$ looks enough like $\mathbb{R}^2$. That we call it $\mathbb{R}^2$ in $\mathbb{R}^3$. 
+
+The other problem (one which was pointed out to me by a student) is that scalar multiplication is defined differently for $\mathbb{C}^2$ and $\mathbb{R}^2$. They are vectorspaces with scalars coming from different fields. One can show that there are no subspaces of $\mathbb{C}^2$ which "look like" $\mathbb{R}^2$ in the way that $W$ looks like $\mathbb{R}^2$. 
+\end{solution}
+
+\begin{problem}
+Give an example of a nonempty subset $U$ of $\mathbb{R}^2$ such that $U$ is closed under addition and under taking additive inverses, but is not a subspace of $\mathbb{R}^2$\\
+
+Give an example of a nonempty subset $U$ of $\mathbb{R}^2$ such that $U$ is closed under scalar multiplication but is not a subspace of $\mathbb{R}^2$
+\end{problem}
+
+\begin{solution}
+"I will not deprive you of the pleasure of discovering the answer for yourself." See if you can use some graphical intuition. What do all subspaces of $R^2$ look like? Lines or the full plane or the trivial subspace. See if you can find some other shapes which satisfy additive properties, multiplicative properties. 
+\end{solution}
+
+\begin{problem}
+Suppose $U_1$ and $U_2$ are subspaces of $V$. Prove that the intersection $U_1 \cap U_2$ is a subspace of $V$
+\end{problem}
+
+\begin{solution}
+Suppose $u \in U_1 \cap U_2$ and $w \in U_1 \cap U_2$. Then $u,w \in U_1$ and therefore $u+w \in U_1$. Similarly, $u,w \in U_2$ and therefore $u+w \in U_2$. So $u+w \in U_1$ and $u+w \in U_2$. Therefore $u+w \in U_1 \cap U_2$. So $U_1 \cap U_2$ is closed under addition. Verify the other $2$ properties from $1.34$. 
+\end{solution}
+
+\begin{problem}
+Suppose $$U = \{(x,x,y,y) \in \mathbb{F}^4 | x,y \in \mathbb{F}\}.$$ Find a subspace $W$ of $\mathbb{F}^4$ such that $\mathbb{F}^4 = U \oplus W$
+\end{problem}
+
+\begin{solution}
+
+
+Going back to the definition, we need to find a description of a subspace $W$ such that given any vector in $\mathbb{F}^4$, that vector can be decomposed uniquely as a sum of a vector in $U$ and a vector in $W$.\\ 
+
+Let $v$ be any vector in $\mathbb{F}^4$. By definition $v = (\alpha,\beta,\gamma,\delta)$ where  $\alpha,\beta,\gamma,\delta \in \mathbb{F}$. We would like to find a unique way to write $v$ as a sum of a vector in $U$ and a vector in $W$, written $v = u + w$ where $u \in U$ and $w \in W$. Since $u \in U$ it will be of the form shown above. In particular we could let $u =(\alpha,\alpha,\gamma,\gamma)$  Expanding $v = u + w$:
+$$(\alpha,\beta,\gamma,\delta) = (\alpha,\alpha,\gamma,\gamma) + w$$ subtracting the vector $(\alpha,\alpha,\gamma,\gamma)$ from both sides, we obtain 
+$$(\alpha,\beta,\gamma,\delta) - (\alpha,\alpha,\gamma,\gamma) =  (0,\beta-\alpha,0,\delta-\gamma) = w.$$  Define $W = \{(0,\beta-\alpha,0,\delta-\gamma)|\alpha,\beta,\gamma,\delta \in \mathbb{F}\}$.\\
+
+It remains to check that for every $(\alpha,\beta,\gamma,\delta) \in \mathbb{F}^4$ it has a unique decomposition as a sum of two vectors, one from $U$ and one from $W$.\\
+
+Letting $(p,q,r,s) \in \mathbb{F}^4$, $(p,q,r,s)  = u + w$. We see that $(p,q,r,s) = (p,p,r,r)+(0,q-p,0,s-r)$ where $u = (p,p,r,r)$ and $w = (0,q-p,0,s-r)$. Thus $U+W = \mathbb{F}^4$. It remains to show that $U+W$ is a direct sum.\\
+
+To show $U \oplus W$, we need to show the decomposition $v = u + w$ is unique. Note that the first component of $w$ must be $0$ (because otherwise it wouldn't be of the form of vectors in $W$). This means that the first component of $u$ must be $p$. The first component of $u$ must be the same as the second component, so the second component of $u$ must be $p$. This determines uniquely the first and second elements of $u$ and $w$.\\
+
+Similarly, the third component of $w$ must be $0$ so the third component of $u$ must be $r$. The third component of $u$ must be the same as the fourth component. This determines uniquely the third and fourth elements of $w$.\\   
+
+For yourself you should make sure that you can verify that $W$ is subspace. 
+\end{solution}
+
+
+\begin{problem}
+Suppose $$U = \{(x,y,x+y,x-y,2x) \in \mathbb{F}^5 | x,y \in \mathbb{F}\}.$$ Find a subspace $W$ of $\mathbb{F}^5$ such that $\mathbb{F}^5 = U \oplus W$
+\end{problem}
+
+\begin{solution}
+Let $(\alpha, \beta,\gamma,\delta,\varepsilon) \in \mathbb{F}^5$. We are trying to find a decomposition like so: $$(\alpha, \beta,\gamma,\delta,\varepsilon) = (x,y,x+y,x-y,2x) + w$$
+Let $x$ be $\alpha$ and $y$ be $\beta$ and subtract to solve for $w$.  $$(\alpha, \beta,\gamma,\delta,\varepsilon) - (\alpha,\beta,\alpha+\beta,\alpha-\beta,2\alpha) = (0,0,\gamma - (\alpha + \beta), \delta - (\alpha - \beta), \varepsilon - 2\alpha) =  w$$ Then let $W = \{(0,0,\gamma - (\alpha + \beta), \delta - (\alpha - \beta), \varepsilon - 2\alpha) | \alpha, \beta,\gamma,\delta,\varepsilon \in \mathbb{F}\}$. I will leave it to you to check that $U + W = \mathbb{F}^5$ and then check that $U \oplus W = \mathbb{F}^5$. In english: check that every vector in $\mathbb{F}^5$ can be written in this way. Then check that this way is unique.  For yourself, check $W$ is a subspace. 
+\end{solution}
+
+\begin{problem}
+Suppose $$U = \{(x,y,x+y,x-y,2x) \in \mathbb{F}^5 | x,y \in \mathbb{F}\}.$$ Find three subspaces $W_1$, $W_2$, and $W_3$ of $\mathbb{F}^5$ such that $\mathbb{F}^5 = U \oplus W_1 \oplus W_2  \oplus W_3$.
+\end{problem}
+\begin{solution}
+Let $W$ be the same subspace as in the answer to the previous problem, the problem will be solved if we can find $W_1$, $W_2$, and $W_3$ such that $W = W_1 \oplus W_2  \oplus W_3$.\\
+
+Conjecture that $W_1 = \{(0,0,x,0,0)|x \in \mathbb{F}\}$, $W_2 = \{(0,0,0,y,0)|y \in \mathbb{F}\}$ and $W_3 = \{(0,0,0,0,z)|z \in \mathbb{F}\}$. It is easy to show that $W_1 \oplus W_2  \oplus W_3 = \{(0,0,x,y,z)|x,y,z \in \mathbb{F}\}$. Now we need to verify that $W = W_1 \oplus W_2  \oplus W_3$.\\
+
+(We could also solve the problem by proving that $\mathbb{F}^5 = U \oplus W_1 \oplus W_2  \oplus W_3$. This is a simpler way. To show this is a direct sum note that the intersection of $U$ and $W_1 \oplus W_2  \oplus W_3$ is only the $0$ vector. There are a few more things to verify.)\\ 
+
+
+First we show that $W$ is contained in $\{(0,0,x,y,z)|x,y,z \in \mathbb{F}\}$.  For any $(0,0,\gamma - (\alpha + \beta), \delta - (\alpha - \beta), \varepsilon - 2\alpha) \in W$, just let $x = \gamma - (\alpha + \beta)$, let $y = \delta - (\alpha - \beta)$ and let $z = \varepsilon - 2\alpha$.\\ 
+
+To show that $\{(0,0,x,y,z)|x,y,z \in \mathbb{F}\}$ is contained in $W$ is slightly harder.  Let $(0,0,x,y,z) \in \{(0,0,x,y,z)|x,y,z \in \mathbb{F}\}$.  To show that  $(0,0,x,y,z) \in W$ we need to find $\alpha$, $\beta$, $\gamma$, $\delta$, and $\varepsilon$ such that  $\gamma - (\alpha + \beta) = x$, $\delta - (\alpha - \beta) = y$ and $\varepsilon - 2\alpha = z$. Let $\alpha$ and $\beta$ both equal $0$. Let $\gamma = x$, $\delta = y$, and $\varepsilon = z$. Thus, $(0,0,x,y,z) \in W$, $\{(0,0,x,y,z)|x,y,z \in \mathbb{F}\}$ is contained in $W$, and the proof is complete. 
+\end{solution}
+
+\end{document}
